@@ -46,14 +46,18 @@ class Messaging extends Component {
     })
   }
   
-  displayMessages = ()=> {
+  displayMessages = event => {
     // e.preventDefault();
-    // event.preventDefault();
+    event.preventDefault();
+    
+    
+
   this.state.messageBody.map(message => {
       return (
+
         <MessageListItem id="center" >
           <strong>
-            <h1>{console.log(message.data[0].body)}</h1>
+            <h1>{message.data[0].body}</h1>
           </strong>
         </MessageListItem>
         
@@ -128,7 +132,8 @@ class Messaging extends Component {
                 Send Message
               </Button>
             <MessageList>
-            {/* <button onClick={this.displayMessages()}>View Messages</button> */}
+            <button onClick={this.displayMessages}>View Messages</button>
+            <div id="messageDiv"></div>
             {/* {this.state.messageBody.map(message => {
                 return (
                   <MessageListItem id="center" >
