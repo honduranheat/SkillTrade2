@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const profileController = require('../../database/controllers/profileController');
+const profileController = require('../../controllers/profileController');
 
 
 // Route for grabbing a specific profile by id, populate it with it's listings and reviews

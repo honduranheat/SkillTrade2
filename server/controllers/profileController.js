@@ -9,7 +9,7 @@ module.exports = {
         db.Profile.findOne({userID: req.params.id})
         .then(function(response){
             if (response) return true;
-            if (err) return false;
+            if (err) res.send( false );
         })
 
     },

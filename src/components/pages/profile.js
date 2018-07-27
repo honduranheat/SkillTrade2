@@ -30,22 +30,22 @@ class Profile extends Component {
 
     componentDidMount() {
       // this.getID();
-        this.loadProfile()
-        .then(res =>
-          this.setState({ profile: res.data, userID: "", firstName: "", lastName: "", email: "", imageLink: "", birthdate: "", location: "", skills: "" })
-      )
-      .catch(err => console.log(err));
+        this.loadProfile();
     };
     
 
     getProfile(id){
       axios.get("/api/profiles/exist/" + id).then(function(response){
+        console.log(response);
         if (response === true) {
           return axios.get("/api/profiles/" + id);
-        } else {
+        } else if (response === false) {
           return axios.post("/api/profiles/"+ id);
         }
-      });
+      }).then(res =>
+        this.setState({ profile: res.data, userID: res.data.userID, firstName: res.data.firstName, lastName: res.data.lastName, email: res.data.email, imageLink: res.data.imageLink, birthdate: res.data.birthdate, location: res.data.location, skills: res.data.skills })
+      )
+      .catch(err => console.log(err));
     ;}
 
     loadProfile() {
@@ -62,7 +62,7 @@ class Profile extends Component {
     
     handleFormSubmit = event => {
         event.preventDefault();
-        if (this.state.email) {
+        if (this.state.firstName) {
           API.saveProfile({
             userID: this.state.userID,
             firstName: this.state.firstName,
@@ -87,15 +87,15 @@ class Profile extends Component {
                 <form>
                     <div className= "form-group">
                         <label for="firstName" className="form-text">
-                            First Name?
+                            First Name
                         </label>
                         <div className="">
-                            <input type="title" className="form-control text-center" id="firstName" placeholder="First Name" value={this.state.firstName} onChange={this.handleInputChange}/>
+                            <input type="title" className="form-control text-center" id="firstName" placeholder={this.state.firstName} onChange={this.handleInputChange}/>
                         </div>
                     </div>
                     <div className= "form-group">
                         <label for="lastName" className="form-text">
-                            Last Name?
+                            Last Name
                         </label>
                         <div className="">
                             <input type="title" className="form-control text-center" id="lastName" placeholder="Last Name" value={this.state.lastName} onChange={this.handleInputChange}/>

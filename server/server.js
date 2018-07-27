@@ -11,6 +11,7 @@ const PORT = 8080
 const user = require('./routes/api/users')
 const message = require("./routes/api/message")
 const listing = require('./routes/api/listing')
+const Routes = require('./routes');
 // const routes = ("./routes")
 // MIDDLEWARE
 app.use(morgan('dev'))
@@ -40,6 +41,7 @@ app.use(passport.session()) // calls the deserializeUser
 app.use('/user', user);
 app.use("/message", message);
 app.use('/listing', listing);
+app.use(Routes);
 // app.unsubsscribe(routes)
 // Starting Server 
 app.listen(PORT, () => {
