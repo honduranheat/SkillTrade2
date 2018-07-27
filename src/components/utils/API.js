@@ -23,5 +23,18 @@ export default {
 	saveListing: function(listingData) {
 		console.log('hit listing api', listingData);
 		return axios.post('/listing/', listingData);
+	},
+	getProfile: function(id) {
+		axios.get("/api/profiles/exist/" + id).then(function(response){
+			if (response === true) {
+				return axios.get("/api/profiles/" + id);
+			} else {
+				return axios.post("/api/profiles/"+ id);
+			}
+		});
+	},
+	
+	saveProfile: function(profileData) {
+		return axios.put("/api/profiles/"+ profileData.userID, profileData);
 	}
 };
