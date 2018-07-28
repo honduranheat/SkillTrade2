@@ -28,8 +28,9 @@ body, html{
 }
 
 .App{
-  background-image: url('./components/Images/adviror.jpg');
+  /* background-image: url('./components/Images/adviror.jpg'); */
    /* Full height */
+   background-color: darkblue;
    height: 100%; 
 
    /* Center and scale the image nicely */
