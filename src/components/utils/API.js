@@ -18,7 +18,7 @@ export default {
     // Listing
     getListings: function() {
         console.log('hit browse api')
-        return axios.get("/browse/");
+        return axios.get("/listing/");
       },
 	saveListing: function(listingData) {
 		console.log('hit listing api', listingData);
