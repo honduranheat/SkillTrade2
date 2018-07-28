@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import API from "./../utils/API";
-import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { MessageListItem, MessageList } from "./../Message";
 import ReactDOM from "react-dom";
 import DeleteBtn from "./../DeleteBtn";
@@ -33,8 +33,10 @@ class Messaging extends Component {
         messages: res.data.message
       });
       this.state.messages.map(id => {
-        this.getMessageBody(id);
-      });
+
+        this.getMessageBody(id)
+        return(id);
+      })
       console.log(this.state.messageBody);
       // this.getMessageBody(this.state.messages[0])
     });
@@ -217,6 +219,7 @@ class Messaging extends Component {
 
     // alert(delButton)
   };
+
   //   // When this component mounts, grab the book with the _id of this.props.match.params.id
   //   // e.g. localhost:3000/books/599dcb67f0f16317844583fc
   //   componentDidMount() {
