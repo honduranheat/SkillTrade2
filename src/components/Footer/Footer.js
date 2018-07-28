@@ -7,11 +7,9 @@ class Footer extends Component {
         return(
         <section id="foot">
         <Container>
-            <Card>
                 <h4 id= "footText" className="text-center">
                     Bringing Community Members Together since 2018.
                 </h4>
-            </Card>
         </Container>
     </section>
         )

@@ -28,8 +28,9 @@ body, html{
 }
 
 .App{
-  background-image: url('./components/Images/adviror.jpg');
+  /* background-image: url('./components/Images/adviror.jpg'); */
    /* Full height */
+   background-color: darkblue;
    height: 100%; 
 
    /* Center and scale the image nicely */
@@ -120,10 +121,12 @@ li {
   display: flex;
   justify-content: center;
 }
+
 #messageDiv {
   border: 1px solid blue;
   color: darkgoldenrod;
 }
+
 .messageClass {
   border: 1px solid orange;
   padding: 10px

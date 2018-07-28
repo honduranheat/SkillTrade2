@@ -4,7 +4,7 @@ mongoose.Promise = global.Promise
 
 //your local database url
 //27017 is the default mongoDB port
-const uri = 'mongodb://localhost:27017/userInfo' 
+const uri = process.env.MONGODB_URI || 'mongodb://localhost:27017/userInfo'; 
 
 mongoose.connect(uri).then(
     () => { 
@@ -14,11 +14,10 @@ mongoose.connect(uri).then(
     },
     err => {
          /** handle initial connection error */ 
-         console.log('error connecting to Mongo: ')
-         console.log(err);
-         
+        console.log('error connecting to Mongo: ')
+        console.log(err);
         }
-  );
+);
 
 
 module.exports = mongoose.connection

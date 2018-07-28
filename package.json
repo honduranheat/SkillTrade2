@@ -6,6 +6,7 @@
     "axios": "^0.18.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
+    "concurrently": "^3.6.1",
     "connect-mongo": "^2.0.1",
     "express": "^4.16.3",
     "express-session": "^1.15.6",
@@ -19,16 +20,16 @@
     "react-dom": "^16.4.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "^1.1.4",
-    "reactstrap": "^6.3.0",
+    "reactstrap": "^6.3.1",
     "spectre.css": "^0.5.3"
   },
   "scripts": {
-    "start": "npm build && npm server",
+    "start": "yarn build && yarn api",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "server": "./node_modules/.bin/nodemon ./server/server.js",
-    "dev": "./node_modules/.bin/concurrently \"react-scripts start\" \"npm server\"",
-    "proxy": "http://localhost:8080"
-  }
+    "api": "./node_modules/.bin/nodemon ./server/server.js",
+    "dev": "./node_modules/.bin/concurrently \"react-scripts start\" \"yarn api\""
+  },
+  "proxy": "http://localhost:8000"
 }
