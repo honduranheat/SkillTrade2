@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import PageSelect from '../Header/PageSelect';
+import PageSelect from '../PageSelect';
 
 class Browse extends Component {
 
