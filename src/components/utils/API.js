@@ -19,7 +19,7 @@ export default {
     getListings: function() {
         console.log('hit browse api')
         return axios.get("/browse/");
-      },
+    },
 	saveListing: function(listingData) {
 		console.log('hit listing api', listingData);
 		return axios.post('/listing/', listingData);
@@ -32,9 +32,8 @@ export default {
 				return axios.post("/api/profiles/"+ id);
 			}
 		});
-	},
-	
+	},	
 	saveProfile: function(profileData) {
-		return axios.put("/api/profiles/"+ profileData.userID, profileData);
+		return axios.put("/api/profiles/"+ profileData._id, profileData);
 	}
 };

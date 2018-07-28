@@ -6,35 +6,39 @@ var Schema = mongoose.Schema;
 // Using the Schema constructor, create a new UserSchema object
 // This is similar to a Sequelize model
 var ProfileSchema = new Schema({
-  userID: {
-    type: String,
+  _id: {
+    type: Schema.Types.ObjectId,
     required: true
   },
   // `title` is required and of type String
   firstName: {
     type: String,
-    required: true
+    required: false
   },
   // `link` is required and of type String
   lastName: {
     type: String,
-    required: true
+    required: false
   },
   email: {
     type: String,
-    required: true
+    required: false
   },
   imageLink: {
     type: String,
-    required: true
+    required: false
   },
   birthdate: {
     type: Date,
-    required: true
+    required: false
   },
   dateJoined: {
     type: Date,
     required: true
+  },
+  lastUpdated: {
+    type: Date,
+    required: false
   },
   location: {
 		type: String,

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import API from '../utils/API';
+// import API from '../utils/API';
 import axios from 'axios';
 class Profile extends Component {
 
@@ -9,7 +9,7 @@ class Profile extends Component {
     state = {
         id: this.props.id,
         profile: [],
-        userID: "",
+        _id: "",
         firstName: "",
         lastName: "",
         email: "",
@@ -35,16 +35,11 @@ class Profile extends Component {
     
 
     getProfile(id){
-      axios.get("/api/profiles/exist/" + id).then(function(response){
+      axios.get("/api/profiles/exist/" + id)
+      .then(response => {
         console.log(response);
-        if (response === true) {
-          return axios.get("/api/profiles/" + id);
-        } else if (response === false) {
-          return axios.post("/api/profiles/"+ id);
-        }
-      }).then(res =>
-        this.setState({ profile: res.data, userID: res.data.userID, firstName: res.data.firstName, lastName: res.data.lastName, email: res.data.email, imageLink: res.data.imageLink, birthdate: res.data.birthdate, location: res.data.location, skills: res.data.skills })
-      )
+        this.setState({ profile: response.data, _id: response.data._id, firstName: response.data.firstName, lastName: response.data.lastName, email: response.data.email, imageLink: response.data.imageLink, birthdate: response.data.birthdate, location: response.data.location, skills: response.data.skills })
+      })
       .catch(err => console.log(err));
     ;}
 
@@ -62,9 +57,24 @@ class Profile extends Component {
     
     handleFormSubmit = event => {
         event.preventDefault();
-        if (this.state.firstName) {
-          API.saveProfile({
-            userID: this.state.userID,
+        
+          var profileData = {
+            _id: this.state._id,
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            email: this.state.email,
+            imageLink: this.state.imageLink,
+            birthdate: this.state.birthdate,
+            location: this.state.location,
+            skills: this.state.skills
+          };
+          console.log(profileData);
+          // let req = {
+          //   url: "/api/profiles/" + this.state.id,
+          //   method: 'PUT',
+          //   data: profileData
+          // };
+          axios.put("/api/profiles/" + this.state.id, {
             firstName: this.state.firstName,
             lastName: this.state.lastName,
             email: this.state.email,
@@ -73,9 +83,8 @@ class Profile extends Component {
             location: this.state.location,
             skills: this.state.skills
           })
-            .then(res => this.loadProfile())
+            .then(res => console.log(res))
             .catch(err => console.log(err));
-        }
     };
     
 
@@ -90,7 +99,7 @@ class Profile extends Component {
                             First Name
                         </label>
                         <div className="">
-                            <input type="title" className="form-control text-center" id="firstName" placeholder={this.state.firstName} onChange={this.handleInputChange}/>
+                            <input type="title" className="form-control text-center" id="firstName" name="firstName" placeholder={this.state.firstName} onChange={this.handleInputChange}/>
                         </div>
                     </div>
                     <div className= "form-group">
@@ -98,7 +107,7 @@ class Profile extends Component {
                             Last Name
                         </label>
                         <div className="">
-                            <input type="title" className="form-control text-center" id="lastName" placeholder="Last Name" value={this.state.lastName} onChange={this.handleInputChange}/>
+                            <input type="title" className="form-control text-center" id="lastName" name="lastName" placeholder={this.state.lastName} onChange={this.handleInputChange}/>
                         </div>
                     </div>
                     <div className= "form-group">
@@ -106,7 +115,7 @@ class Profile extends Component {
                             Email?
                         </label>
                         <div className="">
-                            <input type="title" className="form-control text-center" id="email" placeholder="Email" value={this.state.email} onChange={this.handleInputChange}/>
+                            <input type="title" className="form-control text-center" id="email" name="email" placeholder={this.state.email} onChange={this.handleInputChange}/>
                         </div>
                     </div>
                     <div className= "form-group">
@@ -114,7 +123,7 @@ class Profile extends Component {
                             Image Link?
                         </label>
                         <div className="">
-                            <input type="title" className="form-control text-center" id="imageLink" placeholder="Image Link" value={this.state.imageLink} onChange={this.handleInputChange}/>
+                            <input type="title" className="form-control text-center" id="imageLink" name="imageLink" placeholder={this.state.imageLink} onChange={this.handleInputChange}/>
                         </div>
                     </div>
                     <div className= "form-group">
@@ -122,7 +131,7 @@ class Profile extends Component {
                             Birthday (mm/dd/yy)?
                         </label>
                         <div className="">
-                            <input type="title" className="form-control text-center" id="birthdate" placeholder="Birthday" value={this.state.birthdate} onChange={this.handleInputChange}/>
+                            <input type="title" className="form-control text-center" id="birthdate" name="birthdate" placeholder={this.state.birthdate} onChange={this.handleInputChange}/>
                         </div>
                     </div>
                     <div className= "form-group">
@@ -130,7 +139,7 @@ class Profile extends Component {
                             Where are you located?
                         </label>
                         <div className="">
-                            <input type="title" className="form-control text-center" id="location" placeholder="Location" value={this.state.location} onChange={this.handleInputChange}/>
+                            <input type="title" className="form-control text-center" id="location" name="location" placeholder={this.state.location} onChange={this.handleInputChange}/>
                         </div>
                     </div>
                     <div className= "form-group">
@@ -138,7 +147,7 @@ class Profile extends Component {
                             Description of your Skills
                         </label>
                         <div className="">
-                            <textarea className="form-control text-center" id="skills" placeholder="Description of your Skills go here" value={this.state.skills} onChange={this.handleInputChange}/>
+                            <textarea className="form-control text-center" id="skills" name="skills" placeholder={this.state.skills} onChange={this.handleInputChange}/>
                         </div>
                     </div>
                     <button onClick={this.handleFormSubmit}>Update Profile</button>
