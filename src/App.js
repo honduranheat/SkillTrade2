@@ -99,7 +99,6 @@ class App extends Component {
 				<div>
 				</div>
 				</section>
-				<Footer/>
 			</section>
 		);
 	}

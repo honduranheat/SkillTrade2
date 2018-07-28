@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import Wrapper from '../Wrapper';
+import {Card, Container} from 'reactstrap';
 
 class Profile extends Component {
 
@@ -15,7 +17,12 @@ class Profile extends Component {
   render() {
     return (
       <div>
-        <p>User Profile</p>
+        <Wrapper>
+          <Container>
+            <Card className = "text-center">
+            <h1>
+              User Profile
+            </h1>
 
         <form action="/action_page.php">
           <input type="text" name="firstname" value="Mickey" />
@@ -28,6 +35,9 @@ class Profile extends Component {
         {/* {this.state.loggedIn && <Route path="/browse" component={Browse} />} */}
         {/* {console.log("/messaging/" + this.props.username)} */}
         <a> <Link to={`/messaging/${this.props.username}`}>Messaging</Link></a>
+        </Card>
+        </Container>
+        </Wrapper>
       </div>
     );
   }
