@@ -3,7 +3,7 @@ import API from "./../utils/API";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { MessageListItem, MessageList } from "./../Message";
 import ReactDOM from "react-dom";
-import DeleteBtn from "./../DeleteBtn";
+//import DeleteBtn from "./../DeleteBtn";
 import { UncontrolledCollapse, CardBody, Card } from "reactstrap";
 
 import "./../../App.css";
@@ -103,6 +103,7 @@ class Messaging extends Component {
     event.preventDefault();
     this.state.messageBody.map(message => {
       console.log("renderMessages:" + message.data[0].body);
+      return(console.log('noice'));
       // this.render() {
       //   return (
 
@@ -114,7 +115,7 @@ class Messaging extends Component {
     console.log(this.state.messageProps);
     for (var i = 0; i < this.state.messageProps; i++) {
       console.log(id);
-      if (this.state.messageProps[i].data[0]._id == id) {
+      if (this.state.messageProps[i].data[0]._id === id) {
         console.log("118");
         this.provideMessagesB()
 
