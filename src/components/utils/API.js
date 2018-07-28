@@ -19,7 +19,10 @@ export default {
     getListings: function() {
         console.log('hit browse api')
         return axios.get("/listing/");
-      },
+	  },
+	  checkListing: function(id) {
+		return axios.get("/listing/" + id);
+	  },
 	saveListing: function(listingData) {
 		console.log('hit listing api', listingData);
 		return axios.post('/listing/', listingData);
