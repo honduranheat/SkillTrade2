@@ -114,17 +114,25 @@ class Messaging extends Component {
     console.log(this.state.messageProps);
     for (var i = 0; i < this.state.messageProps; i++) {
       console.log(id);
+      if (this.state.messageProps[i].data[0]._id == id) {
+        console.log("118");
+        this.provideMessagesB()
+
+      }
+      else console.log("120")
     }
+
   };
   deleteMessage = (username, id) => {
     console.log(id);
     API.deleteMessage({
       username: username,
       id: id
-    });
-    // console.log(res)
-    this.deleteFromProps(id);
-
+    }).then(
+    console.log(this.state.messageProps),
+    this.deleteFromProps(id)
+    )
+    
     // this.state.messageProps.map(message => {
     //   if (message.data[0]._id === id) {
     //     console.log(id);
@@ -160,6 +168,7 @@ class Messaging extends Component {
     });
   };
   provideMessagesB = () => {
+    console.log(this.state.messageProps)
     let data = this.state.messageProps;
     const listItems = data.map(d => (
       // <li receiver={d.data.}
