@@ -1,7 +1,11 @@
 import axios from 'axios';
 
 export default {
-	// Gets all books
+
+  deleteMessage: function(messageData) {
+    console.log("message API" + messageData.id)
+    return axios.delete("/message/delete/"+ messageData.username+"/"+messageData.id)
+},
 	getUser: function(username) {
 		console.log('here API');
 		return axios.get('/user/' + username);
@@ -18,8 +22,11 @@ export default {
     // Listing
     getListings: function() {
         console.log('hit browse api')
-        return axios.get("/browse/");
-    },
+        return axios.get("/listing/");
+	  },
+	  checkListing: function(id) {
+		return axios.get("/listing/" + id);
+	  },
 	saveListing: function(listingData) {
 		console.log('hit listing api', listingData);
 		return axios.post('/listing/', listingData);
