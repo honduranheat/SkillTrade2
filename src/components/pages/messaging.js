@@ -162,6 +162,7 @@ class Messaging extends Component {
     const listItems = data.map(d => (
       // <li receiver={d.data.}
       <div class="messageClass" id={d.data[0]._id} key={d.data[0]._id}>
+
         <li>From:{d.data[0].sender}</li>
         <li>Body:{d.data[0].body}</li>
         <DeleteButton
@@ -171,7 +172,7 @@ class Messaging extends Component {
         </DeleteButton>
         <div>
           <Button color="primary" id="toggler" style={{ marginBottom: "1rem" }}>
-            Toggle
+            Reply
           </Button>
           <UncontrolledCollapse toggler="#toggler">
             <Card>
@@ -185,10 +186,12 @@ class Messaging extends Component {
                       id="exampleText"
                       onChange={this.handleInputChange}
                       value={this.state.body}
+                      onClick={this.setState({receiver: d.data[0].sender})}
                     />
                     <Button
                       // disabled={!(this.state.body)}
-                      onClick={this.sayHi}
+                      
+                      onClick= {this.handleFormSubmit}
                     >
                       Send Message
                     </Button>
