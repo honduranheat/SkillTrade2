@@ -25,12 +25,13 @@
     "spectre.css": "^0.5.3"
   },
   "scripts": {
-     "start": "yarn build && yarn api",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "api": "./node_modules/.bin/nodemon ./server/server.js",
-    "dev": "./node_modules/.bin/concurrently \"react-scripts start\" \"yarn api\""
+    "api": "nodemon ./server/server.js",
+    "dev": "concurrently \"react-scripts start\" \"nodemon server/server.js\"",
+    "proxy": "http://localhost:8080"
   },
   "devDependencies": {
     "concurrently": "^3.6.0"
