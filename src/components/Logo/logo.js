@@ -4,7 +4,7 @@ import "./logo.css";
 const Logo = (props) => {
     return (
         <section id="logo">
-            <img src={require('../Images/skill.png')} id="img"/>
+            <img src={require('../Images/logo.png')} id="img"/>
         </section>
     );
 };

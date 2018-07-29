@@ -16,7 +16,7 @@ import Messaging from './components/pages/messaging';
 import addListing from './components/pages/addListing';
 //import Router from ReactRouter.Route;
 //import Switch from ReactRouter.Switch;
-
+import Wrapper from './components/Wrapper';
 import Footer from './components/Footer';
 
 import './App.css'
@@ -66,6 +66,7 @@ class App extends Component {
 	render() {
 		return (
 			<section className="App Site">
+			<Wrapper>
 			<section className = "Site-Content">
 			<Navbar2 updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
 					{/* greet user if logged in: */}
@@ -95,6 +96,7 @@ class App extends Component {
 						<Route path="/messaging" render={() => <Messaging username={this.state.username} />} />
 					)}
 				</section>
+				</Wrapper>
 				<Footer/>
 			</section>
 		);
