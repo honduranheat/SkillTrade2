@@ -96,7 +96,6 @@ class App extends Component {
 						<Route path="/messaging" render={() => <Messaging username={this.state.username} />} />
 					)}
 				</section>
-				<Home/>
 				</Wrapper>
 				<Footer/>
 			</section>
