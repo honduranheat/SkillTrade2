@@ -3,7 +3,7 @@ import API from "./../utils/API";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { MessageListItem, MessageList } from "./../Message";
 import ReactDOM from "react-dom";
-import DeleteBtn from "./../DeleteBtn";
+//import DeleteBtn from "./../DeleteBtn";
 import { UncontrolledCollapse, CardBody, Card } from "reactstrap";
 import "./../../App.css";
 import DeleteButton from "./../DeleteBtn";
@@ -87,7 +87,7 @@ class Messaging extends Component {
   displayMessages = event => {
     // e.preventDefault();
     event.preventDefault();
-    this.state.messageBody.map(message => {
+  this.state.messageBody.map(message => {
       return (
         <MessageListItem id="center">
           <strong>
@@ -101,6 +101,7 @@ class Messaging extends Component {
     event.preventDefault();
     this.state.messageBody.map(message => {
       console.log("renderMessages:" + message.data[0].body);
+      return(console.log('noice'));
       // this.render() {
       //   return (
 
@@ -267,7 +268,9 @@ class Messaging extends Component {
               Send Message
             </Button>
             <MessageList>
+
               {/* <button onClick={function displayMessages( event)  {
+            <button onClick={function displayMessages( event)  {
               event.preventDefault();
               this.state.messageBody.map(message => {
                   return (
@@ -279,12 +282,17 @@ class Messaging extends Component {
                     </MessageListItem>
                     
                   );
-                }) */}
-              {/* }}>View Messages</button> */}
-              <Button onClick={this.provideMessagesB}>Show Messages</Button>
-              <div id="messageDiv" />
+//                 }) */}
+//               {/* }}>View Messages</button> */}
+//               <Button onClick={this.provideMessagesB}>Show Messages</Button>
+//               <div id="messageDiv" />
 
-              {/* {this.state.messageBody.map(message => {
+//               {/* {this.state.messageBody.map(message => {
+                })
+            }}>View Messages</button>
+
+            <div id="messageDiv"></div>
+            {/* {this.state.messageBody.map(message => {
                 return (
                   <MessageListItem id="center" >
                     <strong>

@@ -4,7 +4,7 @@ import API from '../utils/API';
 
 class Listing extends Component {
 	state = {
-		title: [],
+		title: '',
 		description: '',
 		duration: '',
 		datesAvailable: '',
