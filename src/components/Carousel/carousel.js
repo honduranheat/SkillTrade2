@@ -38,6 +38,10 @@ class DemoCarousel extends Component {
                     {/* <p className="legend">Legend 2</p> */}
                 </div>
                 <div>
+                    <img src={require('../Images/skill13.jpg')} />
+                    {/* <p className="legend">Legend 2</p> */}
+                </div>
+                <div>
                     <img src={require('../Images/skill9.jpg')} />
                     {/* <p className=" legend">Welcome to Skill-Trade</p> */}
                 </div>
