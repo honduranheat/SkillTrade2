@@ -91,22 +91,10 @@ class Profile extends Component {
             .catch(err => console.log(err));
     };
     
-
-  render() {
-    return (
-      <div>
-        <Wrapper>
-          <Container>
-            <Card className = "text-center">
-            <h1>
-              User Profile
-            </h1>
-
-
 	render() {
 		return (
-			<section className = "card container text-center mx-auto">
-                <div className ="card-body">
+			<section>
+                <Container>
                 <h1>_id: {this.props.id}</h1>
                 <form>
                     <div className= "form-group">
@@ -167,25 +155,16 @@ class Profile extends Component {
                     </div>
                     <button onClick={this.handleFormSubmit}>Update Profile</button>
                 </form>
-
-                 <Link to={`/messaging/${this.props.username}`}>Messaging</Link>
-
-                </div>
+                <Link to={`/messaging/${this.props.username}`}>Messaging</Link>
+                       {/* {this.state.loggedIn && <Route path="/browse" component={Browse} />} */}
+                       {/* {console.log("/messaging/" + this.props.username)} */}
+                <Link to={`/messaging/${this.props.username}`}>Messaging</Link>
+                </Container>
 			</section>
 		);
 	}
 };
 
-        {/* {this.state.loggedIn && <Route path="/browse" component={Browse} />} */}
-        {/* {console.log("/messaging/" + this.props.username)} */}
-        <a> <Link to={`/messaging/${this.props.username}`}>Messaging</Link></a>
-        </Card>
-        </Container>
-        </Wrapper>
-      </div>
-    );
-  }
-}
 
 
 export default Profile;

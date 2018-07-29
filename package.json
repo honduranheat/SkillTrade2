@@ -36,18 +36,14 @@
   "devDependencies": {
     "concurrently": "^3.6.0"
   },
-  "proxy": "http://localhost:8080",
+  "proxy": "http://localhost:8000",
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
   "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/chelsg7/Project3-2.git"
-  },
+  "repository": "git+https://github.com/chelsg7/Project3-2.git",
   "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/chelsg7/Project3-2/issues"
   },
   "homepage": "https://github.com/chelsg7/Project3-2#readme"
-  "proxy": "http://localhost:8000"
 }
