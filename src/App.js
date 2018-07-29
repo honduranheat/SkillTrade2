@@ -25,7 +25,8 @@ class App extends Component {
 		super();
 		this.state = {
 			loggedIn: false,
-			username: null
+			username: null,
+			id: null
 		};
 
 		this.getUser = this.getUser.bind(this);
@@ -42,7 +43,7 @@ class App extends Component {
 	}
 
 	getUser() {
-		axios.get('/user/').then((response) => {
+		axios.get('/user').then((response) => {
 			console.log('Get user response: ');
 			console.log(response.data);
 			if (response.data.user) {
@@ -50,13 +51,15 @@ class App extends Component {
 
 				this.setState({
 					loggedIn: true,
-					username: response.data.user.username
+					username: response.data.user.username,
+					id: response.data.user.id
 				});
 			} else {
 				console.log('Get user: no user');
 				this.setState({
 					loggedIn: false,
-					username: null
+					username: null,
+					id: null
 				});
 			}
 		});
@@ -68,7 +71,7 @@ class App extends Component {
 			<section className = "Site-Content">
 			<Navbar2 updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
 					{/* greet user if logged in: */}
-					{this.state.loggedIn && <p>WELCOME, {this.state.username.toUpperCase()} TO THE HOMEPAGE </p>}
+					{this.state.loggedIn && <p>WELCOME, {this.state.username.toUpperCase()} TO THE HOMEPAGE  your id is {this.state.id} </p>}
 					{/* Routes to different components */}
 					{!this.state.loggedIn && <Route exact path="/" component={Home} />}
 
@@ -83,7 +86,7 @@ class App extends Component {
 							render={() => (
 								<Profile
 									username={this.state.username}
-									// id={this.state.id}
+									id={this.state.id}
 								/>
 							)}
 						/>
