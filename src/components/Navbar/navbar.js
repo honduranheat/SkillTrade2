@@ -57,21 +57,16 @@ class Navbar2 extends Component {
     console.log("navbar render, props: ");
     console.log(this.props);
 
-    
-
     return (
       <section>
         <Navbar color="dark" className="text-success text-center clearfix" dark>
-        <Container id="contain">
+        {/* <Container id="contain"> */}
           {/* <NavbarBrand href="/" className="mr-auto">Skill-Trade</NavbarBrand> */}
           {/* <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
           <Collapse isOpen={!this.state.collapsed} navbar> */}
           <Nav navbar>
           {loggedIn ? (
               <section className="float-left">
-              <NavbarBrand className = "text-success" id="navText">
-                  Skill-Trade App
-                </NavbarBrand>
               <NavItem>
                 <Link
                   to="#"
@@ -136,7 +131,7 @@ class Navbar2 extends Component {
               </section>
               </Nav>
           {/* </Collapse> */}
-          </Container>
+          {/* </Container> */}
         </Navbar>
       </section>
 
