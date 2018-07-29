@@ -1,3 +1,6 @@
+
+import React, { Component } from "react";
+import PageSelect from '../PageSelect';
 import React, { Component } from 'react';
 import PageSelect from '../Header/PageSelect';
 import { Link } from 'react-router-dom';

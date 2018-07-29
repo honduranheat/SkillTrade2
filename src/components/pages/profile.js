@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 // import API from '../utils/API';
 import axios from 'axios';
+import Wrapper from '../Wrapper';
+import {Card, Container} from 'reactstrap';
+
 class Profile extends Component {
 
   
@@ -42,6 +45,7 @@ class Profile extends Component {
       })
       .catch(err => console.log(err));
     ;}
+
 
     loadProfile() {
         this.getProfile(this.state.id);
@@ -87,6 +91,17 @@ class Profile extends Component {
             .catch(err => console.log(err));
     };
     
+
+  render() {
+    return (
+      <div>
+        <Wrapper>
+          <Container>
+            <Card className = "text-center">
+            <h1>
+              User Profile
+            </h1>
+
 
 	render() {
 		return (
@@ -160,6 +175,17 @@ class Profile extends Component {
 		);
 	}
 };
+
+        {/* {this.state.loggedIn && <Route path="/browse" component={Browse} />} */}
+        {/* {console.log("/messaging/" + this.props.username)} */}
+        <a> <Link to={`/messaging/${this.props.username}`}>Messaging</Link></a>
+        </Card>
+        </Container>
+        </Wrapper>
+      </div>
+    );
+  }
+}
 
 
 export default Profile;

@@ -6,7 +6,7 @@ const dbConnection = require('./database')
 const MongoStore = require('connect-mongo')(session)
 const passport = require('./passport');
 const app = express()
-const PORT = 8080
+const PORT = process.env.PORT || 8000;
 // Route requires
 const user = require('./routes/api/users')
 const message = require("./routes/api/message")
@@ -44,6 +44,11 @@ app.use('/listing', listing);
 app.use(Routes);
 // app.unsubsscribe(routes)
 // Starting Server 
-app.listen(PORT, () => {
-	console.log(`App listening on PORT: ${PORT}`)
+app.listen(PORT, (err) => {
+	if(err){
+		console.log(err);
+	}
+	else{
+		console.log(`App listening on PORT: ${PORT}`)
+	}
 })
