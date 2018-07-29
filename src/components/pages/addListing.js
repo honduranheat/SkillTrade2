@@ -9,14 +9,14 @@ class Listing extends Component {
 		duration: '',
 		datesAvailable: '',
 		tags: ''
-  };
-  
-  handleInputChange = event => {
+};
+
+handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
-      [name]: value
+		[name]: value
     });
-  };
+};
 
 	handleFormSubmit = (event) => {
     event.preventDefault();

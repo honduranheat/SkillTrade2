@@ -18,6 +18,7 @@ import addListing from './components/pages/addListing';
 //import Switch from ReactRouter.Switch;
 
 import Footer from './components/Footer';
+
 import './App.css'
 
 class App extends Component {
@@ -25,8 +26,7 @@ class App extends Component {
 		super();
 		this.state = {
 			loggedIn: false,
-			username: null,
-			id: null
+			username: null
 		};
 
 		this.getUser = this.getUser.bind(this);
@@ -43,7 +43,7 @@ class App extends Component {
 	}
 
 	getUser() {
-		axios.get('/user').then((response) => {
+		axios.get('/user/').then((response) => {
 			console.log('Get user response: ');
 			console.log(response.data);
 			if (response.data.user) {
@@ -51,15 +51,13 @@ class App extends Component {
 
 				this.setState({
 					loggedIn: true,
-					username: response.data.user.username,
-					id: response.data.user.id
+					username: response.data.user.username
 				});
 			} else {
 				console.log('Get user: no user');
 				this.setState({
 					loggedIn: false,
-					username: null,
-					id: null
+					username: null
 				});
 			}
 		});
@@ -71,7 +69,7 @@ class App extends Component {
 			<section className = "Site-Content">
 			<Navbar2 updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
 					{/* greet user if logged in: */}
-					{this.state.loggedIn && <p>WELCOME, {this.state.username.toUpperCase()} TO THE HOMEPAGE  your id is {this.state.id} </p>}
+					{this.state.loggedIn && <p>WELCOME, {this.state.username.toUpperCase()} TO THE HOMEPAGE </p>}
 					{/* Routes to different components */}
 					{!this.state.loggedIn && <Route exact path="/" component={Home} />}
 
@@ -86,7 +84,7 @@ class App extends Component {
 							render={() => (
 								<Profile
 									username={this.state.username}
-									id={this.state.id}
+									// id={this.state.id}
 								/>
 							)}
 						/>
@@ -95,12 +93,7 @@ class App extends Component {
 					{this.state.loggedIn && <Route path="/addListing" component={addListing} />}
 					{this.state.loggedIn && (
 						<Route path="/messaging" render={() => <Messaging username={this.state.username} />} />
-					)}/>
-				<div>
-					
-				</div>
-				<div>
-				</div>
+					)}
 				</section>
 				<Footer/>
 			</section>
