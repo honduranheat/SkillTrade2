@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import Jumbo from "../Jumbo";
+import Search from "../Search";
+import DemoCarousel from "../Carousel";
+import Logo from "../Logo";
 
 class Home extends Component {
   
@@ -7,8 +9,9 @@ class Home extends Component {
   render() {
     return (
       <div>
-          <Jumbo/>
-        <p>HOME PAGE (not logged in)</p>
+        <Logo/>
+          <DemoCarousel/>
+          <Search/>
       </div>
     );
   }

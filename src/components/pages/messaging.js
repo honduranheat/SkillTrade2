@@ -5,7 +5,6 @@ import { MessageListItem, MessageList } from "./../Message";
 import ReactDOM from "react-dom";
 //import DeleteBtn from "./../DeleteBtn";
 import { UncontrolledCollapse, CardBody, Card } from "reactstrap";
-
 import "./../../App.css";
 import DeleteButton from "./../DeleteBtn";
 class Messaging extends Component {
@@ -33,10 +32,9 @@ class Messaging extends Component {
         messages: res.data.message
       });
       this.state.messages.map(id => {
-
-        this.getMessageBody(id)
-        return(id);
-      })
+        this.getMessageBody(id);
+        return id;
+      });
       console.log(this.state.messageBody);
       // this.getMessageBody(this.state.messages[0])
     });
@@ -112,28 +110,25 @@ class Messaging extends Component {
     });
   };
   deleteFromProps = id => {
-    console.log(this.state.messageProps);
+    console.log(this.state.messageProps[0].data[0]._id);
+    // var mongoose = require("mongoose");
+    // id = ObjectId(id).str;
+    console.log(id)
     for (var i = 0; i < this.state.messageProps; i++) {
-      console.log(id);
-      if (this.state.messageProps[i].data[0]._id === id) {
+      console.log(this.state.messageProps[i].data[0]._id);
+      if (this.state.messageProps[i].data[0]._id == id) {
         console.log("118");
-        this.provideMessagesB()
-
-      }
-      else console.log("120")
+        this.provideMessagesB();
+      } else {console.log("120")};
     }
-
   };
   deleteMessage = (username, id) => {
     console.log(id);
     API.deleteMessage({
       username: username,
       id: id
-    }).then(
-    console.log(this.state.messageProps),
-    this.deleteFromProps(id)
-    )
-    
+    }).then(console.log(this.state.messageProps), this.deleteFromProps(id));
+
     // this.state.messageProps.map(message => {
     //   if (message.data[0]._id === id) {
     //     console.log(id);
@@ -160,8 +155,8 @@ class Messaging extends Component {
   };
   sayHi = event => {
     event.preventDefault();
-    console.log(this.state.body)
-  }
+    console.log(this.state.body);
+  };
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
@@ -169,12 +164,11 @@ class Messaging extends Component {
     });
   };
   provideMessagesB = () => {
-    console.log(this.state.messageProps)
+    console.log(this.state.messageProps);
     let data = this.state.messageProps;
     const listItems = data.map(d => (
       // <li receiver={d.data.}
       <div class="messageClass" id={d.data[0]._id} key={d.data[0]._id}>
-
         <li>From:{d.data[0].sender}</li>
         <li>Body:{d.data[0].body}</li>
         <DeleteButton
@@ -198,12 +192,12 @@ class Messaging extends Component {
                       id="exampleText"
                       onChange={this.handleInputChange}
                       value={this.state.body}
-                      onClick={this.setState({receiver: d.data[0].sender})}
+                      onClick={this.setState({ receiver: d.data[0].sender })}
                     />
                     <Button
                       // disabled={!(this.state.body)}
-                      
-                      onClick= {this.handleFormSubmit}
+
+                      onClick={this.handleFormSubmit}
                     >
                       Send Message
                     </Button>
