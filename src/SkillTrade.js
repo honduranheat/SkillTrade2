@@ -18,6 +18,7 @@ import addListing from './components/pages/addListing';
 //import Switch from ReactRouter.Switch;
 
 import Footer from './components/Footer';
+
 import './App.css'
 
 class App extends Component {
@@ -92,12 +93,7 @@ class App extends Component {
 					{this.state.loggedIn && <Route path="/addListing" component={addListing} />}
 					{this.state.loggedIn && (
 						<Route path="/messaging" render={() => <Messaging username={this.state.username} />} />
-					)}/>
-				<div>
-					
-				</div>
-				<div>
-				</div>
+					)}
 				</section>
 				<Footer/>
 			</section>

@@ -1,4 +1,20 @@
 
+In package.json, before push to heroku - update SCRIPTS to:
+
+    // "start": "yarn build && yarn api",
+    // "build": "react-scripts build",
+    // "test": "react-scripts test --env=jsdom",
+    // "eject": "react-scripts eject",
+    // "api": "./node_modules/.bin/nodemon ./server/server.js",
+    // "dev": "./node_modules/.bin/concurrently \"react-scripts start\" \"yarn api\""
+
+
+
+
+
+
+
+
 To-Do List
 ✔ Initialize Passport @done(18-07-18 20:16)
 ☐ Skeleton of Website
