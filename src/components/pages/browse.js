@@ -1,5 +1,4 @@
-
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import PageSelect from '../PageSelect';
 // import React, { Component } from 'react';
 // import PageSelect from '../Header/PageSelect';
@@ -45,14 +44,14 @@ class Browse extends Component {
 	// 	API.checkListing()
 	// 		.then((res) =>
 	// 			this.setState({
-					
+
 	// 				title: '',
 	// 				description: '',
 	// 				duration: '',
 	// 				datesAvailable: '',
 	// 				tags: ''
 	// 			})
-				
+
 	// 		)
 	// 		.catch((err) => console.log(err));
 	// };
@@ -86,12 +85,7 @@ class Browse extends Component {
 											<li> {listing.duration} </li>
 											<li> {listing.datesAvailable} </li>
 											<li> {listing.tags} </li>
-											<button
-												className="checklistBtn"
-												onClick={() => this.checkListing(listing._id)}
-											>
-												check
-											</button>
+											
 										</ListItem>
 									))}
 								</List>

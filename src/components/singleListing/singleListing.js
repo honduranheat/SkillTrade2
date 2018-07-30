@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Col, Row, Container } from "../../components/Grid";
+import { Container, Card, CardBody } from "reactstrap";
 import API from "../utils/API";
 
 class singleListing extends Component {
@@ -9,6 +9,7 @@ class singleListing extends Component {
   };
   
   componentDidMount() {
+    console.log('single listing hit')
     API.checkListing(this.props.match.params.id)
       .then(res => this.setState({ listing: res.data }))
       .catch(err => console.log(err));
@@ -16,31 +17,27 @@ class singleListing extends Component {
 
   render() {
     return (
-      <Container fluid>
-        <Row>
-          <Col size="md-12">
-           
+      <Container>
+        <Card>
+          <CardBody>
               <h1>
                 {this.state.listing.title} from user ID
               </h1>
-           
-          </Col>
-        </Row>
-        <Row>
-          <Col size="md-10 md-offset-1">
-            <article>
+          </CardBody>
+        </Card>
+          <Card>
+            <CardBody>
               <h1>Description</h1>
               <p>
                 {this.state.listing.description}
               </p>
-            </article>
-          </Col>
-        </Row>
-        <Row>
-          <Col size="md-2">
+          </CardBody>
+        </Card>
+        <Card>
+          <CardBody>
             <Link to="/browse/">← Back to Browse</Link>
-          </Col>
-        </Row>
+         </CardBody>
+        </Card>
       </Container>
     );
   }
