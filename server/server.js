@@ -36,7 +36,7 @@ app.use(
 app.use(passport.initialize())
 app.use(passport.session()) // calls the deserializeUser
 
-
+ 
 // Routes
 app.use('/user', user);
 app.use("/message", message);
@@ -44,6 +44,7 @@ app.use('/listing', listing);
 app.use(Routes);
 // app.unsubsscribe(routes)
 // Starting Server 
+<<<<<<< HEAD
 app.listen(PORT, (err) => {
 	if(err){
 		console.log(err);
@@ -52,3 +53,8 @@ app.listen(PORT, (err) => {
 		console.log(`App listening on PORT: ${PORT}`)
 	}
 })
+=======
+app.listen(PORT, () => {
+	console.log(`App listening on PORT: ${PORT}`)
+}) 
+>>>>>>> c6ca314a8070586130859541d03fa349b7c4b6eb

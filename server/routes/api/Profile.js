@@ -16,4 +16,4 @@ router.route("/chips/:id/:chips")
     .put(profileController.addChips);
 
 
-module.exports = router;
+module.exports = router; 

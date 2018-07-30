@@ -10,7 +10,8 @@ import API from '../utils/API';
 class viewListing extends Component {
 	
 
-	render() {
+	render() { 
+        <div>hello yo</div>
     };
 
 }

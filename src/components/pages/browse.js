@@ -5,10 +5,12 @@ import PageSelect from '../PageSelect';
 // import PageSelect from '../Header/PageSelect';
 import { Link } from 'react-router-dom';
 import '../../App.js';
+import '../../App.css';
 //import Input from '../Form/Input';
 import { List, ListItem } from '../List';
 import { Col, Row, Container } from '../Grid';
 import API from '../utils/API';
+//import singleListing from '../singleListing'
 
 class Browse extends Component {
 	state = {
@@ -39,11 +41,21 @@ class Browse extends Component {
 			.catch((err) => console.log(err));
 	};
 
-	checkListing = (id) => {
-		API.checkListing(id)
-			.then((res) => console.log('success'))
-			.catch((err) => console.log('err from checkListing', err));
-	};
+	// checkListing = () => {
+	// 	API.checkListing()
+	// 		.then((res) =>
+	// 			this.setState({
+					
+	// 				title: '',
+	// 				description: '',
+	// 				duration: '',
+	// 				datesAvailable: '',
+	// 				tags: ''
+	// 			})
+				
+	// 		)
+	// 		.catch((err) => console.log(err));
+	// };
 
 	handleInputChange = (event) => {
 		const { name, value } = event.target;
@@ -66,15 +78,20 @@ class Browse extends Component {
 											<Link to={'/listing/' + listing._id}>
 												<strong>
 													<ul>
-														<li> {listing.title} </li>
-														<li> {listing.description} </li>
-														<li> {listing.duration} </li>
-														<li> {listing.datesAvailable} </li>
-														<li> {listing.tags} </li>
+														<li className="listTitle"> {listing.title} </li>
 													</ul>
 												</strong>
 											</Link>
-											<button className='checklistBtn' onClick={() => this.checkListing(listing._id)} >check</button>
+											<li> {listing.description} </li>
+											<li> {listing.duration} </li>
+											<li> {listing.datesAvailable} </li>
+											<li> {listing.tags} </li>
+											<button
+												className="checklistBtn"
+												onClick={() => this.checkListing(listing._id)}
+											>
+												check
+											</button>
 										</ListItem>
 									))}
 								</List>
