@@ -6,7 +6,7 @@ import { Route } from 'react-router-dom';
 import Signup from './components/login/sign-up';
 import LoginForm from './components/login/login-form';
 import Navbar2 from './components/Navbar';
-import Home from './components/pages/home';
+import Home from './components/Home/home';
 
 
 import Browse from './components/Listing/browse';
