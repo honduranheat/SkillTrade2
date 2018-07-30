@@ -1,34 +1,46 @@
+ctrl + enter for box
+alt + d for check
+
 
 To-Do List
 ✔ Initialize Passport @done(18-07-18 20:16)
-☐ Skeleton of Website
-☐ Create form and append info to page
+✔ Skeleton of Website @done(18-07-28 23:21)
+✔ Create form and append info to page @done(18-07-28 23:21)
 ☐ Save form data to user model (one-to-many)
 ☐ Change views based on authentication
 ☐ Enable chips
 
+next task
+☐ button on each listing to view on separate page
+☐ when viewing on separate page, send message/book the lessson
+☐ in profile, ability to end lesson and get chips
+
+☐ after message, allow for calendar selection (day and time)
+☐ save to both users and notify of upcoming session
+☐ on date, rate session, and chips handed out
+
 Lessons
-☐ Create Form that takes in user input
+✔ Create Form that takes in user input @done(18-07-28 23:21)
 ☐ Search parameters to filter lessons
-☐ Allow user to append lessons to Browse page
+✔ Allow user to append lessons to Browse page @done(18-07-28 23:21)
 ☐ Lessons must save to the user in the database (user => one to many => lessons)
-☐ Messaging functionality between users to schedule lessons
+✔ Messaging functionality between users to schedule lessons @done(18-07-28 23:21)
 ☐ Method for giving chips upon completion
 
 Passport
-☐ Once logged in, change views
+✔ Once logged in, change views @done(18-07-28 23:21)
 
 User Settings
 ☐ Create User Profile Page
 ☐ Allow user to alter public profile
 ☐ Check/Redeem chips
-☐ Messages
+✔ Messages @done(18-07-28 23:21)
 
 MVP
-☐ User Login
-☐ Send Messages
-☐ Receive Messages
-☐ Add Lessons
+✔ User Login @done(18-07-28 23:21)
+✔ Send Messages @done(18-07-28 23:21)
+✔ Receive Messages @done(18-07-28 23:21)
+✔ Add Lessons @done(18-07-28 23:21)
 ☐ Sign Up for Lessons
 ☐ Chips & Rewards
 
