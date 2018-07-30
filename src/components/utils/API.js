@@ -16,7 +16,7 @@ export default {
 	getMessageBody: function(id) {
 		console.log('here API body' + id);
 		return axios.get('/message/' + id);
-	},
+	}, 
 	///////////////////////////////////////////////////////////////////
 	// Listing
 	getListings: function() {

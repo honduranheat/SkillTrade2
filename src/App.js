@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
 import axios from 'axios';
-import { Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+//import { Route } from 'react-router-dom';
 // components
 import Signup from './components/login/sign-up';
 import LoginForm from './components/login/login-form';
@@ -13,6 +14,7 @@ import Profile from './components/pages/profile';
 import Ranking from './components/pages/topusers';
 import Messaging from './components/pages/messaging';
 import addListing from './components/pages/addListing';
+import singleListing from './components/singleListing/singleListing.js';
 //import Router from ReactRouter.Route;
 //import Switch from ReactRouter.Switch;
 
@@ -67,7 +69,11 @@ class App extends Component {
 				<div>
 					<Navbar updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
 					{/* greet user if logged in: */}
-					{this.state.loggedIn && <p>WELCOME, {this.state.username.toUpperCase()} TO THE HOMEPAGE  your id is {this.state.id} </p>}
+					{this.state.loggedIn && (
+						<p>
+							WELCOME, {this.state.username.toUpperCase()} TO THE HOMEPAGE your id is {this.state.id}{' '}
+						</p>
+					)}
 					{/* Routes to different components */}
 					{!this.state.loggedIn && <Route exact path="/" component={Home} />}
 
@@ -79,12 +85,7 @@ class App extends Component {
 					{this.state.loggedIn && (
 						<Route
 							path="/profile"
-							render={() => (
-								<Profile
-									username={this.state.username}
-									id={this.state.id}
-								/>
-							)}
+							render={() => <Profile username={this.state.username} id={this.state.id} />}
 						/>
 					)}
 					{this.state.loggedIn && <Route path="/topusers" component={Ranking} />}
@@ -94,6 +95,10 @@ class App extends Component {
 					)}
 				</div>
 				<div className="container" />
+
+				<Switch>
+					<Route exact path="/listing/:id" component={singleListing} />
+				</Switch>
 			</div>
 		);
 	}

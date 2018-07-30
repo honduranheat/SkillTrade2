@@ -17,7 +17,7 @@ class Listing extends Component {
       [name]: value
     });
   };
-
+ 
 	handleFormSubmit = (event) => {
     event.preventDefault();
     console.log('hit');
