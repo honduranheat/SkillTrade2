@@ -85,7 +85,7 @@ class App extends Component {
 							render={() => (
 								<Profile
 									username={this.state.username}
-									// id={this.state.id}
+									id={this.state.id}
 								/>
 							)}
 						/>
