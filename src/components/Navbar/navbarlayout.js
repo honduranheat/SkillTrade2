@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
 
+
 class NavEx extends React.Component {
   constructor(props) {
     super(props);
@@ -60,11 +61,11 @@ class NavEx extends React.Component {
                   <span id="navText" className = "text-success">Browse</span>
                 </Link>
                 </NavItem>
-                <NavItem>
+                {/* <NavItem>
                 <Link to="/topcont" >
                   <span id="navText" className = "text-success">Top Contributors</span>
                 </Link>
-                </NavItem>
+                </NavItem> */}
                 <NavItem>
                 <Link to="/profile" >
                   <span id="navText" className = "text-success">Profile</span>
