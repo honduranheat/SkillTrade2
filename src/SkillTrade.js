@@ -9,11 +9,11 @@ import Navbar2 from './components/Navbar';
 import Home from './components/pages/home';
 
 
-import Browse from './components/pages/browse';
+import Browse from './components/Listing/browse';
 import Profile from './components/Profile/profile';
-import Ranking from './components/pages/topusers';
+// import Ranking from './components/pages/topusers';
 import Messaging from './components/Message/messaging';
-import addListing from './components/pages/addListing';
+import addListing from './components/Listing/addListing';
 //import Router from ReactRouter.Route;
 //import Switch from ReactRouter.Switch;
 // import Wrapper from './components/Wrapper';
