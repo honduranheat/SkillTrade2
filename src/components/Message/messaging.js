@@ -1,12 +1,15 @@
 import React, { Component } from "react";
-import API from "./../utils/API";
+import API from "../utils/API";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
-import { MessageListItem, MessageList } from "./../Message";
+import { MessageListItem, MessageList } from "./index";
 import ReactDOM from "react-dom";
 //import DeleteBtn from "./../DeleteBtn";
 import { UncontrolledCollapse, CardBody, Card } from "reactstrap";
-import "./../../App.css";
-import DeleteButton from "./../DeleteBtn";
+// import "./../../App.css";
+import DeleteButton from "./DeleteBtn";
+import './message.css'
+
+
 class Messaging extends Component {
   constructor(props) {
     super(props);
@@ -173,15 +176,15 @@ class Messaging extends Component {
         <li>Body:{d.data[0].body}</li>
         <DeleteButton
           onClick={() => this.deleteMessage(this.props.username, d.data[0]._id)}
-        >
+          color="primary" bsSize="lg" block >
           Delete
         </DeleteButton>
         <div>
-          <Button color="primary" id="toggler" style={{ marginBottom: "1rem" }}>
+          <Button color="primary" bsSize="lg" block id="toggler" style={{ marginBottom: "1rem", margin: 'auto'}}>
             Reply
           </Button>
           <UncontrolledCollapse toggler="#toggler">
-            <Card>
+            <Card body outline color="warning">
               <CardBody>
                 <Form>
                   <FormGroup>
@@ -193,10 +196,11 @@ class Messaging extends Component {
                       onChange={this.handleInputChange}
                       value={this.state.body}
                       onClick={this.setState({ receiver: d.data[0].sender })}
+                      bsSize="lg"
                     />
                     <Button
                       // disabled={!(this.state.body)}
-
+                      style={{margin: 'auto'}}
                       onClick={this.handleFormSubmit}
                     >
                       Send Message
@@ -238,7 +242,8 @@ class Messaging extends Component {
   render() {
     return (
       <div>
-        <div>
+        <Card id="mess" className="text-center" body outline color="danger">
+        <CardBody>
           <h1>Send Message</h1>
           <Form>
             <FormGroup>
@@ -249,6 +254,7 @@ class Messaging extends Component {
                 id="exampleText"
                 onChange={this.handleInputChange}
                 value={this.state.body}
+                bsSize="lg"
               />
             </FormGroup>
             <FormGroup>
@@ -259,14 +265,20 @@ class Messaging extends Component {
                 id="exampleEmail"
                 onChange={this.handleInputChange}
                 value={this.state.receiver}
+                bsSize="lg"
               />
             </FormGroup>
             <Button
               disabled={!(this.state.receiver && this.state.body)}
               onClick={this.handleFormSubmit}
-            >
+              color="primary" size="lg" block
+              style={{margin: 'auto'}} >
               Send Message
             </Button>
+            <h1 className="display-1">
+            Inbox
+            </h1>
+            <Button onClick={this.provideMessagesB} color="primary" size="lg" block>Show Messages</Button>
             <MessageList>
 
               {/* <button onClick={function displayMessages( event)  {
@@ -283,11 +295,14 @@ class Messaging extends Component {
                     
                   );
 //                 }) */}
-//               {/* }}>View Messages</button> */}
-//               <Button onClick={this.provideMessagesB}>Show Messages</Button>
-//               <div id="messageDiv" />
+{/* }}>View Messages</button> */}
 
-//               {/* {this.state.messageBody.map(message => {
+<div id="messageDiv" />
+</MessageList>
+</Form>
+</CardBody>
+</Card>
+            {/* {this.state.messageBody.map(message => {
                 })
             }}>View Messages</button>
 
@@ -311,7 +326,6 @@ class Messaging extends Component {
                   </MessageListItem>
                                 )
               })} */}
-            </MessageList>
             {/* <FormGroup>
               <Label for="exampleEmail">To (username):</Label>
               <Input
@@ -332,7 +346,7 @@ class Messaging extends Component {
                 value={this.state.receiver}
               />
             </FormGroup> */}
-          </Form>
+          
           {/* {this.provideMessages} */}
           {/* // res.data.map((message) => { */}
           {/* //   return (
@@ -345,12 +359,14 @@ class Messaging extends Component {
           })
         } */}
           {/* ["0"].props.children */}
-        </div>
 
-        <div>
-          <h1>Inbox</h1>
+        {/* <Card body outline color="warning">
+          <CardBody>
+          <h1 color="info" className="display-2 text-center">Inbox</h1>
           {/* <p>{this.state.user}</p> */}
-        </div>
+         {/* </Form>
+          </CardBody>
+        </Card> */}
       </div>
     );
   }

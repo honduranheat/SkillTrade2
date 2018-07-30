@@ -7,7 +7,6 @@ import {Card, Container} from 'reactstrap';
 
 class Profile extends Component {
 
-  
     
     state = {
         id: this.props.id,
@@ -95,6 +94,7 @@ class Profile extends Component {
 		return (
 			<section>
                 <Container>
+                    <Card>
                 <h1>_id: {this.props.id}</h1>
                 <form>
                     <div className= "form-group">
@@ -159,6 +159,7 @@ class Profile extends Component {
                        {/* {this.state.loggedIn && <Route path="/browse" component={Browse} />} */}
                        {/* {console.log("/messaging/" + this.props.username)} */}
                 <Link to={`/messaging/${this.props.username}`}>Messaging</Link>
+                </Card>
                 </Container>
 			</section>
 		);
