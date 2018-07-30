@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css?family=Righteous');
+
+#jumboText{
+    font-family: 'Righteous', cursive;
+    background-color: lightblue;
+    padding: 10vh;
+}
+#contain{
+    padding: 7vh;
+    margin: auto;
+}
+#search{
+    width: 50vw;
+}
+
+#btn{
+    margin-bottom: 2.5vh;
+    width: 40vh;
+}

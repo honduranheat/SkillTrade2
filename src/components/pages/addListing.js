@@ -4,19 +4,19 @@ import API from '../utils/API';
 
 class Listing extends Component {
 	state = {
-		title: [],
+		title: '',
 		description: '',
 		duration: '',
 		datesAvailable: '',
 		tags: ''
-  };
-  
-  handleInputChange = event => {
+};
+
+handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
-      [name]: value
+		[name]: value
     });
-  };
+};
 
 	handleFormSubmit = (event) => {
     event.preventDefault();
