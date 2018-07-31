@@ -30,6 +30,7 @@ body, html{
 .App{
   /* background-image: url('./components/Images/adviror.jpg'); */
    /* Full height */
+   background-image: url('../src/components/Images/clouds.jpg');
    background-color: darkblue;
    height: 100%; 
 

@@ -9,14 +9,14 @@ import Navbar2 from './components/Navbar';
 import Home from './components/pages/home';
 import UserProfiles from './components/pages/userprofiles';
 
-import Browse from './components/pages/browse';
-import Profile from './components/pages/profile';
-import Ranking from './components/pages/topusers';
-import Messaging from './components/pages/messaging';
-import addListing from './components/pages/addListing';
+import Browse from './components/Listing/browse';
+import Profile from './components/Profile/profile';
+// import Ranking from './components/pages/topusers';
+import Messaging from './components/Message/messaging';
+import addListing from './components/Listing/addListing';
 //import Router from ReactRouter.Route;
 //import Switch from ReactRouter.Switch;
-import Wrapper from './components/Wrapper';
+// import Wrapper from './components/Wrapper';
 import Footer from './components/Footer';
 
 import './App.css'
@@ -66,7 +66,7 @@ class App extends Component {
 	render() {
 		return (
 			<section className="App Site">
-			<Wrapper>
+			{/* <Wrapper> */}
 			<section className = "Site-Content">
 			<Navbar2 updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
 					{/* greet user if logged in: */}
@@ -98,13 +98,13 @@ class App extends Component {
 							/>
 						)}
 					/>
-					{this.state.loggedIn && <Route path="/topusers" component={Ranking} />}
+					{/* {this.state.loggedIn && <Route path="/topusers" component={Ranking} />} */}
 					{this.state.loggedIn && <Route path="/addListing" component={addListing} />}
 					{this.state.loggedIn && (
 						<Route path="/messaging" render={() => <Messaging username={this.state.username} />} />
 					)}
 				</section>
-				</Wrapper>
+				{/* </Wrapper> */}
 				<Footer/>
 			</section>
 		);
