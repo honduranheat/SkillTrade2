@@ -6,14 +6,14 @@ import { Route } from 'react-router-dom';
 import Signup from './components/login/sign-up';
 import LoginForm from './components/login/login-form';
 import Navbar2 from './components/Navbar';
-import Home from './components/pages/home';
+import Home from './components/Home/home';
 
 
-import Browse from './components/pages/browse';
+import Browse from './components/Listing/browse';
 import Profile from './components/Profile';
-import Ranking from './components/pages/topusers';
+// import Ranking from './components/pages/topusers';
 import Messaging from './components/Message/messaging';
-import addListing from './components/pages/addListing';
+import addListing from './components/Listing/addListing';
 //import Router from ReactRouter.Route;
 //import Switch from ReactRouter.Switch;
 import Wrapper from './components/Wrapper';
@@ -90,7 +90,7 @@ class App extends Component {
 							)}
 						/>
 					)}
-					{this.state.loggedIn && <Route path="/topusers" component={Ranking} />}
+					{/* {this.state.loggedIn && <Route path="/topusers" component={Ranking} />} */}
 					{this.state.loggedIn && <Route path="/addListing" component={addListing} />}
 					{this.state.loggedIn && (
 						<Route path="/messaging" render={() => <Messaging username={this.state.username} />} />
