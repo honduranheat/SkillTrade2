@@ -8,7 +8,6 @@ import LoginForm from './components/login/login-form';
 import Navbar2 from './components/Navbar';
 import Home from './components/Home/home';
 
-
 import Browse from './components/Listing/browse';
 import Profile from './components/Profile/profile';
 // import Ranking from './components/pages/topusers';
