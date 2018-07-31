@@ -7,7 +7,7 @@ import Signup from './components/login/sign-up';
 import LoginForm from './components/login/login-form';
 import Navbar2 from './components/Navbar';
 import Home from './components/pages/home';
-
+import UserProfiles from './components/pages/userprofiles';
 
 import Browse from './components/pages/browse';
 import Profile from './components/pages/profile';
@@ -91,6 +91,16 @@ class App extends Component {
 							)}
 						/>
 					)}
+				
+					<Route
+						path="/userprofile/:username"
+						render={(props) => (
+							<UserProfiles
+								username={props.match.params.username}
+							/>
+						)}
+					/>
+					
 					{this.state.loggedIn && <Route path="/topusers" component={Ranking} />}
 					{this.state.loggedIn && <Route path="/addListing" component={addListing} />}
 					{this.state.loggedIn && (

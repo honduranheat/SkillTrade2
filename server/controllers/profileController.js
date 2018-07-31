@@ -11,12 +11,13 @@ module.exports = {
             if (!response) {
                 db.Profile.create({
                     _id: req.params.id,
-                    firstName: "no first name saved",
-                    lastName: "no last name saved",
-                    email: "no email saved",
-                    imageLink: "no image link saved",
-                    location: "no location saved",
-                    skills: "no skills yet",
+                    username: req.params.username,
+                    firstName: "No first name saved",
+                    lastName: "No last name saved",
+                    email: "No email saved",
+                    imageLink: "https://pbs.twimg.com/profile_images/892784464945926144/E3uvZI7Z_400x400.jpg",
+                    location: "No location saved",
+                    skills: "No skills listed yet!",
                     dateJoined: date,
                     karmaChips: 0
                 }).then(function(newprofile){
@@ -72,6 +73,18 @@ module.exports = {
         // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...
         db.Profile.findOne({ _id: req.params.id })
         // ..and populate all of the notes associated with it
+        .populate("listings")
+        .then(function(userProfile) {
+            // If we were able to successfully find an Article with the given id, send it back to the client
+            res.json(userProfile);
+        })
+        .catch(function(err) {
+            // If an error occurred, send it to the client
+            res.json(err);
+        });
+    },
+    getProfilebyUsername: function(req, res) {
+        db.Profile.findOne({ username: req.params.username })
         .populate("listings")
         .then(function(userProfile) {
             // If we were able to successfully find an Article with the given id, send it back to the client
