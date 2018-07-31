@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
-import axios from 'axios'
+import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
+import axios from 'axios';
+import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
 class LoginForm extends Component {
     constructor() {
@@ -59,7 +60,38 @@ class LoginForm extends Component {
             return (
                 <div>
                     <h4>Login</h4>
-                    <form className="form-horizontal">
+                    <Form>
+                        <FormGroup>
+                            <Label for="username">
+                            UserName : 
+                            </Label>
+                            <Input type="text"
+                                id="username"
+                                name="username"
+                                placeholder="Username"
+                                value={this.state.username}
+                                onChange={this.handleChange} />
+                        </FormGroup>
+                        <FormGroup>
+                            <Label for="password">
+                            Password :  
+                            </Label>
+                            <Input
+                                placeholder="password"
+                                type="password"
+                                name="password"
+                                value={this.state.password}
+                                onChange={this.handleChange} />
+                        </FormGroup>
+                        <FormGroup>
+                            <Button color="primary"
+                                onClick={this.handleSubmit}
+                                type="submit">
+                                Login
+                            </Button>
+                        </FormGroup>
+                    </Form>
+                    {/* <form className="form-horizontal">
                         <div className="form-group">
                             <div className="col-1 col-ml-auto">
                                 <label className="form-label" htmlFor="username">Username</label>
@@ -74,8 +106,8 @@ class LoginForm extends Component {
                                     onChange={this.handleChange}
                                 />
                             </div>
-                        </div>
-                        <div className="form-group">
+                        </div> */}
+                        {/* <div className="form-group">
                             <div className="col-1 col-ml-auto">
                                 <label className="form-label" htmlFor="password">Password: </label>
                             </div>
@@ -88,16 +120,15 @@ class LoginForm extends Component {
                                     onChange={this.handleChange}
                                 />
                             </div>
-                        </div>
-                        <div className="form-group ">
+                        </div> */}
+                        {/* <div className="form-group ">
                             <div className="col-7"></div>
                             <button
                                 className="btn btn-primary col-1 col-mr-auto"
-                               
                                 onClick={this.handleSubmit}
                                 type="submit">Login</button>
                         </div>
-                    </form>
+                    </form> */}
                 </div>
             )
         }
