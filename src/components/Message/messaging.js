@@ -108,19 +108,39 @@ class Messaging extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     console.log(this.props.username + "LINE 109!!!!!!!!!!!!!!!!!!");
-    if (this.state.receiver && this.state.body) {
+if (this.state.receiver && this.state.body) {
       API.sendMessage({
         receiver: this.state.receiver,
         body: this.state.body,
         sender: this.props.username
       })
-        .then(res => {
-          console.log(res);
+        // .then(res => {
+        //   console.log(res)
+
+          // if(res === this.props.username) {
+          //   console.log("Same User")
+          // }
+          // else {
+          //   console.log(
+          //   "different user"
+          //   )
+          // }
+          // console.log(res);
           // this.componentDidMount()
-        })
+    
         // .then(res => this.loadBooks())
         .catch(err => console.log(err));
+        console.log("here 133")
+        if(this.state.receiver === this.props.username) {
+          console.log("135 Receiver is the same")
+        }
+        else {
+          console.log("135 Receiver isnt same")
+
+        }
+        // this.getUser(this.props.username)
     }
+
   };
   sayHi = event => {
     event.preventDefault();

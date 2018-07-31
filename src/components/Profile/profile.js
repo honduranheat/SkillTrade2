@@ -27,7 +27,7 @@ class Profile extends Component {
       birthdate: "",
       location: "",
       skills: "",
-      reivews: [],
+      reviews: [],
       reviewer: "",
       rating: "",
       message: "",
@@ -57,14 +57,14 @@ class Profile extends Component {
   toggle = () => {
     // event.preventDefault();
     this.setState({
-      popoverOpen: !this.state.popoverOpen
+      popoverOpen: true
     });
     // this.handleFormSubmit2();
   };
 
   componentDidMount() {
     // this.getID();
-    this.toggle()
+    // this.toggle()
     this.loadProfile();
   }
 
@@ -99,6 +99,21 @@ class Profile extends Component {
       }
     }
   };
+  renderReview = reviewData => {
+      console.log(reviewData)
+      var reviewItem = (
+        <div className="reviewClass" id={reviewData._id} key={reviewData._id}>
+        <p>From:{reviewData.reviewer}</p>
+        <p>Rating:{reviewData.rating}</p>
+        <p>Message:{reviewData.message}</p>
+        {this.state.reviewPoints.push(reviewData.rating)}
+      </div>
+
+      )
+      this.getReviewAverage()
+      ReactDOM.render(reviewItem, document.getElementById("reviewDiv"));
+
+  }
   getReviews = id => {
     console.log(id);
     API.getReviewBody(id).then(res => {
@@ -151,7 +166,8 @@ class Profile extends Component {
   };
   saveReview = reviewData => {
     API.saveReview(reviewData);
-    console.log("here 122");
+    // this.state.reviews.push(reviewData)
+    this.getReviews(this.state._id)
     this.toggle();
   };
   handleFormSubmit2 = event => {

@@ -72,12 +72,15 @@ module.exports = {
       console.log(dbReview.receiverId + "Line 57");
       var id = dbReview.receiverId;
       // var id = mongoose.Types.ObjectId(dbReview.receiverId)
-      return db.User.findByIdAndUpdate(
+      db.User.findByIdAndUpdate(
         { _id: id },
         { $push: { review: dbReview._id } },
         { new: true }
-      );
-    });
+      )
+      res.send(dbUser)
+      })
+        
+    
     // db.Profile.findOneAndUpdate({_id: id}, //change when we get user in params
     // {$push: {
     //     reviews:
