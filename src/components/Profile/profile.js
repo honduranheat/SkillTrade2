@@ -158,7 +158,9 @@ class Profile extends Component {
                     </FormGroup>
                     <button onClick={this.handleFormSubmit}>Update Profile</button>
                 </Form>
-                <Link to={`/messaging/${this.props.username}`}>Messages</Link>
+                <Link to={`/messaging/${this.props.username}`}>
+                    Messages
+                </Link>
                        {/* {this.state.loggedIn && <Route path="/browse" component={Browse} />} */}
                        {/* {console.log("/messaging/" + this.props.username)} */}
                 </CardBody> 

@@ -95,12 +95,9 @@ class App extends Component {
 						<Route path="/messaging" render={() => <Messaging username={this.state.username} />} />
 					)}/>
 					<section className = "Site-Content">
-					<Wrapper>
-					{/* content goes here */}
-					</Wrapper>
-				</section>
-				<Footer/>
-			</section>
+					</section>
+					<Footer/>
+					</section>
 		);
 	}
 }
