@@ -9,7 +9,6 @@ import LoginForm from './components/login/login-form';
 import Navbar2 from './components/Navbar';
 import Home from './components/pages/home';
 
-
 import Browse from './components/pages/browse';
 import Profile from './components/pages/profile';
 import Ranking from './components/pages/topusers';
@@ -20,7 +19,7 @@ import singleListing from './components/singleListing/singleListing.js';
 //import Switch from ReactRouter.Switch;
 
 import Footer from './components/Footer';
-import './App.css'
+import './App.css';
 
 class App extends Component {
 	constructor() {
@@ -70,47 +69,45 @@ class App extends Component {
 	render() {
 		return (
 			<div>
-			<section className="App Site">
-			<section className = "Site-Content">
-			<Navbar2 updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
-					{/* greet user if logged in: */}
-					{this.state.loggedIn && (
-						<p>
-							WELCOME, {this.state.username.toUpperCase()} TO THE HOMEPAGE your id is {this.state.id}{' '}
-						</p>
-					)}
-					{/* Routes to different components */}
-					{!this.state.loggedIn && <Route exact path="/" component={Home} />}
-
-					{!this.state.loggedIn && (
-						<Route path="/login" render={() => <LoginForm updateUser={this.updateUser} />} />
-					)}
-					{!this.state.loggedIn && <Route path="/signup" render={() => <Signup signup={this.signup} />} />}
-					{this.state.loggedIn && <Route path="/browse" component={Browse} />}
-					{this.state.loggedIn && (
-						<Route
-							path="/profile"
-							render={() => <Profile username={this.state.username} id={this.state.id} />}
-						/>
-					)}
-					{this.state.loggedIn && <Route path="/topusers" component={Ranking} />}
-					{this.state.loggedIn && <Route path="/addListing" component={addListing} />}
-					{this.state.loggedIn && (
-						<Route path="/messaging" render={() => <Messaging username={this.state.username} />} />
-					)}/>
-				<div>
-					
-				</div>
-				<div>
-				</div>
+				<section className="App Site">
+					<section className="Site-Content">
+						<Navbar2 updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
+						{/* greet user if logged in: */}
+						{this.state.loggedIn && (
+							<p>
+								WELCOME, {this.state.username.toUpperCase()} TO THE HOMEPAGE your id is {this.state.id}{' '}
+							</p>
+						)}
+						{/* Routes to different components */}
+						{!this.state.loggedIn && <Route exact path="/" component={Home} />}
+						{!this.state.loggedIn && (
+							<Route path="/login" render={() => <LoginForm updateUser={this.updateUser} />} />
+						)}
+						{!this.state.loggedIn && (
+							<Route path="/signup" render={() => <Signup signup={this.signup} />} />
+						)}
+						{this.state.loggedIn && <Route path="/browse" component={Browse} />}
+						{this.state.loggedIn && (
+							<Route
+								path="/profile"
+								render={() => <Profile username={this.state.username} id={this.state.id} />}
+							/>
+						)}
+						{this.state.loggedIn && <Route path="/topusers" component={Ranking} />}
+						{this.state.loggedIn && <Route path="/addListing" component={addListing} />}
+						{this.state.loggedIn && (
+							<Route path="/messaging" render={() => <Messaging username={this.state.username} />} />
+						)}/>
+						<div />
+						<div />
+					</section>
+					<Footer />
+					<Switch>
+						<Route exact path="/listing/:id" component={singleListing} />
+					</Switch>
 				</section>
-				<Footer/>
-				<Switch>
-					<Route exact path="/listing/:id" component={singleListing} />
-				</Switch>
-			</section>
 				<div className="container" />
-				</div>
+			</div>
 		);
 	}
 }
