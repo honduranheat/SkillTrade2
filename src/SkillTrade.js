@@ -8,7 +8,7 @@ import LoginForm from './components/login/login-form';
 import Navbar2 from './components/Navbar';
 import Home from './components/pages/home';
 
-
+import singleListing from './components/singleListing/singleListing.js';
 import Browse from './components/pages/browse';
 import Profile from './components/pages/profile';
 import Ranking from './components/pages/topusers';
@@ -97,6 +97,7 @@ class App extends Component {
 					)}
 				</section>
 				</Wrapper>
+				<Route exact path="/listing/:id" component={singleListing} />
 				<Footer/>
 			</section>
 		);
