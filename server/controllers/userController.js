@@ -1,6 +1,6 @@
 const db = require("../database/models");
 var mongoose = require("mongoose");
-const Message = require("./../database/models/Message");
+const Message = require("./../database/models/message");
 module.exports = {
   findMessages: function(req, res) {
     db.User.findById({ _id: req.params.id })
