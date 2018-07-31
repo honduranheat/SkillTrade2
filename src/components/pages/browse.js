@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import PageSelect from '../PageSelect';
-// import React, { Component } from 'react';
-// import PageSelect from '../Header/PageSelect';
+//import PageSelect from '../Header/PageSelect';
 import { Link } from 'react-router-dom';
 import '../../App.js';
 import '../../App.css';
+import { ListGroup, ListGroupItem } from 'reactstrap';
 //import Input from '../Form/Input';
-import { List, ListItem } from '../List';
+import { List } from '../List';
 import { Col, Row, Container } from '../Grid';
 import API from '../utils/API';
 //import singleListing from '../singleListing'
@@ -66,27 +65,21 @@ class Browse extends Component {
 	render() {
 		return (
 			<div>
-				<PageSelect />
 				<Container>
 					<Row>
 						<Col size="md-6 sm-12">
 							{this.state.listings.length ? (
 								<List>
 									{this.state.listings.map((listing) => (
-										<ListItem key={listing._id}>
+										<ListGroup key={listing._id}>
 											<Link to={'/listing/' + listing._id}>
-												<strong>
-													<ul>
-														<li className="listTitle"> {listing.title} </li>
-													</ul>
-												</strong>
+												<ListGroupItem className="listTitle"> {listing.title} </ListGroupItem>
+												<ListGroupItem> {listing.description} </ListGroupItem>
+												<ListGroupItem> {listing.duration} </ListGroupItem>
+												<ListGroupItem> {listing.datesAvailable} </ListGroupItem>
+												<ListGroupItem> {listing.tags} </ListGroupItem>
 											</Link>
-											<li> {listing.description} </li>
-											<li> {listing.duration} </li>
-											<li> {listing.datesAvailable} </li>
-											<li> {listing.tags} </li>
-											
-										</ListItem>
+										</ListGroup>
 									))}
 								</List>
 							) : (

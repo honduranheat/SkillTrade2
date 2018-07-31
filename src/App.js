@@ -98,13 +98,13 @@ class App extends Component {
 						{this.state.loggedIn && (
 							<Route path="/messaging" render={() => <Messaging username={this.state.username} />} />
 						)}/>
+						<Switch>
+							<Route exact path="/listing/:id" component={singleListing} />
+						</Switch>
 						<div />
 						<div />
 					</section>
 					<Footer />
-					<Switch>
-						<Route exact path="/listing/:id" component={singleListing} />
-					</Switch>
 				</section>
 				<div className="container" />
 			</div>
