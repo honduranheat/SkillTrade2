@@ -70,7 +70,7 @@ class App extends Component {
 			<section className = "Site-Content">
 			<Navbar2 updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
 					{/* greet user if logged in: */}
-					{this.state.loggedIn && <p>WELCOME, {this.state.username.toUpperCase()} TO THE HOMEPAGE </p>}
+					{this.state.loggedIn && <p id="textFormat">WELCOME, {this.state.username.toUpperCase()} TO THE HOMEPAGE </p>}
 					{/* Routes to different components */}
 					{!this.state.loggedIn && <Route exact path="/" component={Home} />}
 

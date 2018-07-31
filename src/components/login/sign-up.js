@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import axios from 'axios'
+import axios from 'axios';
+import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
 class Signup extends Component {
 	constructor() {
@@ -49,14 +50,18 @@ class Signup extends Component {
 render() {
 	return (
 		<div className="SignupForm">
-			<h4>Sign up</h4>
-			<form className="form-horizontal">
-				<div className="form-group">
-					<div className="col-1 col-ml-auto">
-						<label className="form-label" htmlFor="username">Username</label>
+			<h4 className="text-center">
+				Sign up
+			</h4>
+			<Form>
+				<FormGroup>
+					<div>
+						<Label htmlFor="username">
+						Username
+						</Label>
 					</div>
-					<div className="col-3 col-mr-auto">
-						<input className="form-input"
+					<div>
+						<Input className="form-input"
 							type="text"
 							id="username"
 							name="username"
@@ -65,13 +70,15 @@ render() {
 							onChange={this.handleChange}
 						/>
 					</div>
-				</div>
-				<div className="form-group">
-					<div className="col-1 col-ml-auto">
-						<label className="form-label" htmlFor="password">Password: </label>
+				</FormGroup>
+				<FormGroup>
+					<div>
+						<Label className="form-label" htmlFor="password">
+						Password : 
+						</Label>
 					</div>
-					<div className="col-3 col-mr-auto">
-						<input className="form-input"
+					<div>
+						<Input
 							placeholder="password"
 							type="password"
 							name="password"
@@ -79,16 +86,17 @@ render() {
 							onChange={this.handleChange}
 						/>
 					</div>
-				</div>
-				<div className="form-group ">
+				</FormGroup>
+				<FormGroup>
 					<div className="col-7"></div>
-					<button
-						className="btn btn-primary col-1 col-mr-auto"
+					<Button
+						className="btn"
 						onClick={this.handleSubmit}
-						type="submit"
-					>Sign up</button>
-				</div>
-			</form>
+						type="submit">
+						Sign up
+					</Button>
+				</FormGroup>
+			</Form>
 		</div>
 
 	)
