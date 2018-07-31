@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 // import API from '../utils/API';
 import axios from 'axios';
 import Wrapper from '../Wrapper';
-import {Card, Container} from 'reactstrap';
+import {Card, CardBody, CardHeader, Container,  Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 class Profile extends Component {
 
@@ -94,74 +94,79 @@ class Profile extends Component {
 		return (
 			<section>
                 <Container>
-                    <Card>
+                    <Card body border color="danger">
+                        <CardHeader>
                 <h1>_id: {this.props.id}</h1>
-                <form>
-                    <div className= "form-group">
-                        <label for="firstName" className="form-text">
+                </CardHeader>
+                <CardBody>
+                <Form>
+                    <FormGroup>
+                        <Label for="firstName" className="form-text">
                             First Name
-                        </label>
+                        </Label>
                         <div className="">
-                            <input type="title" className="form-control text-center" id="firstName" name="firstName" placeholder={this.state.firstName} onChange={this.handleInputChange}/>
+                            <Input type="title" className="form-control text-center" id="firstName" name="firstName" placeholder={this.state.firstName} onChange={this.handleInputChange}/>
                         </div>
-                    </div>
-                    <div className= "form-group">
-                        <label for="lastName" className="form-text">
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="lastName" className="form-text">
                             Last Name
-                        </label>
+                        </Label>
                         <div className="">
-                            <input type="title" className="form-control text-center" id="lastName" name="lastName" placeholder={this.state.lastName} onChange={this.handleInputChange}/>
+                            <Input type="title" className="form-control text-center" id="lastName" name="lastName" placeholder={this.state.lastName} onChange={this.handleInputChange}/>
                         </div>
-                    </div>
-                    <div className= "form-group">
-                        <label for="email" className="form-text">
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="email" className="form-text">
                             Email?
-                        </label>
+                        </Label>
                         <div className="">
-                            <input type="title" className="form-control text-center" id="email" name="email" placeholder={this.state.email} onChange={this.handleInputChange}/>
+                            <Input type="title" className="form-control text-center" id="email" name="email" placeholder={this.state.email} onChange={this.handleInputChange}/>
                         </div>
-                    </div>
-                    <div className= "form-group">
-                        <label for="imageLink" className="form-text">
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="imageLink" className="form-text">
                             Image Link?
-                        </label>
+                        </Label>
                         <div className="">
-                            <input type="title" className="form-control text-center" id="imageLink" name="imageLink" placeholder={this.state.imageLink} onChange={this.handleInputChange}/>
+                            <Input type="title" className="form-control text-center" id="imageLink" name="imageLink" placeholder={this.state.imageLink} onChange={this.handleInputChange}/>
                         </div>
-                    </div>
-                    <div className= "form-group">
-                        <label for="birthdate" className="form-text">
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="birthdate" className="form-text">
                             Birthday (mm/dd/yy)?
-                        </label>
+                        </Label>
                         <div className="">
-                            <input type="title" className="form-control text-center" id="birthdate" name="birthdate" placeholder={this.state.birthdate} onChange={this.handleInputChange}/>
+                            <Input type="title" className="form-control text-center" id="birthdate" name="birthdate" placeholder={this.state.birthdate} onChange={this.handleInputChange}/>
                         </div>
-                    </div>
-                    <div className= "form-group">
-                        <label for="location" className="form-text">
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="location" className="form-text">
                             Where are you located?
-                        </label>
+                        </Label>
                         <div className="">
-                            <input type="title" className="form-control text-center" id="location" name="location" placeholder={this.state.location} onChange={this.handleInputChange}/>
+                            <Input type="title" className="form-control text-center" id="location" name="location" placeholder={this.state.location} onChange={this.handleInputChange}/>
                         </div>
-                    </div>
-                    <div className= "form-group">
-                        <label for="skills" className="form-text">
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="skills" className="form-text">
                             Description of your Skills
-                        </label>
+                        </Label>
                         <div className="">
-                            <textarea className="form-control text-center" id="skills" name="skills" placeholder={this.state.skills} onChange={this.handleInputChange}/>
+                            <Input type="textarea" className="form-control text-center" id="skills" name="skills" placeholder={this.state.skills} onChange={this.handleInputChange}/>
                         </div>
-                    </div>
+                    </FormGroup>
                     <button onClick={this.handleFormSubmit}>Update Profile</button>
-                </form>
-                <Link to={`/messaging/${this.props.username}`}>Messaging</Link>
+                </Form>
+                <Link to={`/messaging/${this.props.username}`}>
+                    Messages
+                </Link>
                        {/* {this.state.loggedIn && <Route path="/browse" component={Browse} />} */}
                        {/* {console.log("/messaging/" + this.props.username)} */}
-                <Link to={`/messaging/${this.props.username}`}>Messaging</Link>
-                </Card>
-                </Container>
-			</section>
+                </CardBody> 
+            </Card>
+        </Container>
+	</section>
 		);
 	}
 };
