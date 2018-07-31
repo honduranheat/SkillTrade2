@@ -75,6 +75,8 @@ module.exports = {
         // ..and populate all of the notes associated with it
         .populate("listings")
         .then(function(userProfile) {
+            console.log("user profile...");
+            console.log(userProfile);
             // If we were able to successfully find an Article with the given id, send it back to the client
             res.json(userProfile);
         })
@@ -87,6 +89,8 @@ module.exports = {
         db.Profile.findOne({ username: req.params.username })
         .populate("listings")
         .then(function(userProfile) {
+            console.log("user profile...");
+            console.log(userProfile);
             // If we were able to successfully find an Article with the given id, send it back to the client
             res.json(userProfile);
         })

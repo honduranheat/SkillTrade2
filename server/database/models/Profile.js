@@ -10,6 +10,10 @@ var ProfileSchema = new Schema({
     type: Schema.Types.ObjectId,
     required: true
   },
+  username: {
+    type: String,
+    required: true
+  },
   // `title` is required and of type String
   firstName: {
     type: String,
