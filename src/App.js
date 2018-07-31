@@ -89,7 +89,7 @@ class App extends Component {
 							)}
 						/>
 					)}
-					{this.state.loggedIn && <Route path="/topusers" component={Ranking} />}
+					{/* {this.state.loggedIn && <Route path="/topusers" component={Ranking} />} */}
 					{this.state.loggedIn && <Route path="/addListing" component={addListing} />}
 					{this.state.loggedIn && (
 						<Route path="/messaging" render={() => <Messaging username={this.state.username} />} />
