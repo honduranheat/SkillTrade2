@@ -11,7 +11,7 @@ class DemoCarousel extends Component {
             <Carousel autoPlay showArrows={true} showStatus={false} showThumbs = {false} infiniteLoop={true} transitionTime="5" dynamicHeight={true}>
                 <div>
                     <img src={require('../Images/advice3.jpg')} />
-                    {/* <p className=" legend">Welcome to Skill-Trade</p> */}
+                    <p className=" legend">Welcome to Skill-Trade</p>
                 </div>
                 <div>
                     <img src={require('../Images/skill1.jpg')} />

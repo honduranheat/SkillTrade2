@@ -278,6 +278,7 @@ class Messaging extends Component {
             <h1 className="display-1">
             Inbox
             </h1>
+            
             <Button onClick={this.provideMessagesB} color="primary" size="lg" block>Show Messages</Button>
             <MessageList>
 
