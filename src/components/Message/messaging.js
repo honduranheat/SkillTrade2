@@ -53,42 +53,10 @@ class Messaging extends Component {
   getMessageBody = id => {
     console.log(id);
     API.getMessageBody(id).then(res => {
-      // this.setState(state => ({
-      //   messageBody: [...state.messageBody, res]
-      // }))
       this.state.messageProps.push(res);
-      // this.setState(
-      //   this.state
-      // )
-      // this.state
-      // for(var i =0; i < this.state.messageBody.length ; i++) {
-      // console.log(this.state.messageProps)
-      // console.log(res.data[0].body + "@2222222");
-      // // ReactDOM.append(res.data[0].body, document.getElementById('messageDiv'));
-      // console.log(this.state.messageBody[0].data[0].body + "@#####33");
-      // var para = document.createElement("p");
-      // var node = document.createTextNode(res.data[0].body);
-      // var delButton = document.createElement("BUTTON");
-      // var t = document.createTextNode("Delete")
-
-      // para.appendChild(node);
-      // delButton.appendChild(t);
-      // var element = document.getElementById("messageDiv");
-      // element.appendChild(para);
-      // element.appendChild(delButton);
-      // delButton.onclick = function(event) {
-      //   event.preventDefault();
-      //   console.log(node)
-      //   API.deleteMessage(node)
-      // }
-      // // delButton.onClick(alert(t))
-      // // return res.data[0].body; //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-      //  return para;
-      // this.renderMessages(res.data[0].body);
     });
   };
   displayMessages = event => {
-    // e.preventDefault();
     event.preventDefault();
   this.state.messageBody.map(message => {
       return (
