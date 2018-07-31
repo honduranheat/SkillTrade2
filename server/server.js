@@ -6,7 +6,12 @@ const dbConnection = require('./database')
 const MongoStore = require('connect-mongo')(session)
 const passport = require('./passport');
 const app = express()
+const path = require('path')
 const PORT = process.env.PORT || 8000;
+if(process.env.NODE_ENV === "production") {
+	console.log(__dirname)
+	app.use(express.static(path.join(__dirname, "./build")));
+}
 // Route requires
 const user = require('./routes/api/users')
 const message = require("./routes/api/message")
@@ -20,7 +25,9 @@ app.use(
 		extended: false
 	})
 )
-app.use(bodyParser.json())
+app.use(bodyParser.json());
+
+
 
 // Sessions
 app.use(
