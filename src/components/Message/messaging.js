@@ -68,29 +68,25 @@ class Messaging extends Component {
       );
     });
   };
-  renderMessages = event => {
-    event.preventDefault();
-    this.state.messageBody.map(message => {
-      console.log("renderMessages:" + message.data[0].body);
-      return(console.log('noice'));
-      // this.render() {
-      //   return (
 
-      //   )
-      // }
-    });
-  };
+  removeMessage = id => {
+    console.log(id + "LINE 84!!!!!!!!!!!!!!!!!!!!!!!!1")
+    document.getElementById(id).remove();
+  }
   deleteFromProps = id => {
-    console.log(this.state.messageProps[0].data[0]._id);
+    console.log(this.state.messageProps[0].data);
     // var mongoose = require("mongoose");
     // id = ObjectId(id).str;
     console.log(id)
-    for (var i = 0; i < this.state.messageProps; i++) {
-      console.log(this.state.messageProps[i].data[0]._id);
+    for (var i = 0; i < this.state.messageProps.length; i++) {
+      console.log(this.state.messageProps[i].data[0]._id + "HEEEERRRRE))))))))))))))))))))))))))");
       if (this.state.messageProps[i].data[0]._id == id) {
         console.log("118");
-        this.provideMessagesB();
-      } else {console.log("120")};
+        this.state.messageProps.splice(i, 1)
+        console.log(this.state.messageProps)
+        this.provideMessagesB()
+        break;
+      } else {console.log("120"); i++};
     }
   };
   deleteMessage = (username, id) => {
@@ -98,7 +94,8 @@ class Messaging extends Component {
     API.deleteMessage({
       username: username,
       id: id
-    }).then(console.log(this.state.messageProps), this.deleteFromProps(id));
+    })
+    this.deleteFromProps(id);
 
     // this.state.messageProps.map(message => {
     //   if (message.data[0]._id === id) {
@@ -119,6 +116,7 @@ class Messaging extends Component {
       })
         .then(res => {
           console.log(res);
+          // this.componentDidMount()
         })
         // .then(res => this.loadBooks())
         .catch(err => console.log(err));
