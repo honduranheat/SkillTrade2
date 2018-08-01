@@ -74,10 +74,7 @@ class Browse extends Component {
 										<ListGroup key={listing._id}>
 											<Link to={'/listing/' + listing._id}>
 												<ListGroupItem className="listTitle"> {listing.title} </ListGroupItem>
-												<ListGroupItem> {listing.description} </ListGroupItem>
-												<ListGroupItem> {listing.duration} </ListGroupItem>
-												<ListGroupItem> {listing.datesAvailable} </ListGroupItem>
-												<ListGroupItem> {listing.tags} </ListGroupItem>
+												
 											</Link>
 										</ListGroup>
 									))}

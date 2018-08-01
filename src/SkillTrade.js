@@ -7,7 +7,7 @@ import Signup from './components/login/sign-up';
 import LoginForm from './components/login/login-form';
 import Navbar2 from './components/Navbar';
 import Home from './components/Home/home';
-import UserProfiles from './components/pages/userprofiles';
+//import UserProfiles from './components/pages/userprofiles';
 import addListing from './components/Listing/addListing';
 
 import Browse from './components/Listing/browse';
