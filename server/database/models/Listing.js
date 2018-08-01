@@ -5,7 +5,10 @@ var Schema = mongoose.Schema;
 
 
 var ListingSchema = new Schema({
-  // `title` is of type String
+  user: {
+    type: String,
+    required: true
+  },
   title: {
     type: String,
     required: true

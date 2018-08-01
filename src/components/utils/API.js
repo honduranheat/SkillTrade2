@@ -10,7 +10,7 @@ export default {
 		return axios.get('/user/' + username);
 	},
 	sendMessage: function(receiverData) {
-		console.log('message API');
+		console.log(' send message API');
 		return axios.post('/user/send', receiverData);
 	},
 	getMessageBody: function(id) {

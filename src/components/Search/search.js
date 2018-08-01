@@ -1,5 +1,5 @@
 import React from 'react';
-import { Jumbotron, Button, Container, Row, Col, Form, FormGroup, Label, Input, FormText, Card} from 'reactstrap';
+import { Jumbotron, Button,  Form, FormGroup, Input, Card} from 'reactstrap';
 import "./search.css";
 
 const Search = (props) => {
@@ -14,7 +14,7 @@ const Search = (props) => {
                     <Form>
                         <FormGroup>
                             {/* <Label for="search" id="label">Search</Label> */}
-                            <Input type="text" name="search" id="search" placeholder="Search Listings" large className = "text-center"/>
+                            <Input type="text" name="search" id="search" placeholder="Search Listings" large className = "text-center searchbar"/>
                         </FormGroup>
                         <Button id="btn">Submit</Button>
                         </Form>

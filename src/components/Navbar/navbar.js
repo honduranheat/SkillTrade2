@@ -73,83 +73,6 @@ class Navbar2 extends Component {
 
     return (
       <section>
-        {/* <Navbar color="dark" className="text-success text-center clearfix" dark>
-
-          <Nav navbar>
-            {loggedIn ? (
-              <section className="float-left">
-                <NavItem>
-                  <Link to="#" id="navText" onClick={this.logout}>
-                    <span className="text-success">Logout</span>
-                  </Link>
-                </NavItem>
-              </section>
-            ) : (
-              <section className="float-left">
-                <NavItem>
-                  <Link to="/">
-                    <span id="navText" className="text-success">
-                      Skill-Trade Home
-                    </span>
-                  </Link>
-                </NavItem>
-                <NavItem>
-                  <Link to="/login">
-                    <span id="navText" className="text-success">
-                      Login
-                    </span>
-                  </Link>
-                </NavItem>
-                <NavItem>
-                  <Link to="/signup">
-                    <span id="navText" className="text-success">
-                      Sign Up
-                    </span>
-                  </Link>
-                </NavItem>
-              </section>
-            )}
-            <section className="float-right">
-              <NavItem>
-                <Link to="/browse">
-                  <span id="navText" className="text-success">
-                    Browse
-                  </span>
-                </Link>
-              </NavItem>
-              <NavItem>
-                <Link to="/topcont">
-                  <span id="navText" className="text-success">
-                    Top Contributors
-                  </span>
-                </Link>
-              </NavItem>
-              <NavItem>
-                <Link to="/profile">
-                  <span id="navText" className="text-success">
-                    Profile
-                  </span>
-                </Link>
-              </NavItem>
-              <NavItem>
-                <Link to="/addListing">
-                  <span id="navText" className="text-success">
-                    Add a New Listing
-                  </span>
-                </Link>
-              </NavItem>
-              <NavItem>
-                <Link to="/messaging/">
-                  <span id="navText" className="text-success">
-                    Messages
-                  </span>
-                </Link>
-              </NavItem>
-            </section>
-          </Nav>
-          {/* </Collapse> */}
-        {/* </Container> */}
-        {/* </Navbar> */}
         <div>
           <Navbar color="light" light expand="md">
             <NavbarBrand href="/">Skill Trade</NavbarBrand>
@@ -157,7 +80,7 @@ class Navbar2 extends Component {
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto" navbar>
                 {loggedIn ? (
-                  <section className="float-left">
+                  <section className="float-left logoutBtn">
                     <NavItem>
                       <Link to="#" id="navText" onClick={this.logout}>
                         <span className="text-success">Logout</span>
@@ -165,11 +88,11 @@ class Navbar2 extends Component {
                     </NavItem>
                   </section>
                 ) : (
-                  <section>
+                  <section className='test'>
                     <section className="float-left">
                       <NavItem>
                         <Link to="/login">
-                          <span id="navText" className="text-success">
+                          <span id="navText" className="text-success loginBtn">
                             Login
                           </span>
                         </Link>
@@ -223,8 +146,8 @@ class Navbar2 extends Component {
                     <DropdownItem>
                       <NavItem>
                         <Link to="/addListing">
-                          <span id="navText" className="text-success">
-                            Add a New Listing
+                          <span id="navText" className="text-success listBtn">
+                            Add Listing
                           </span>
                         </Link>
                       </NavItem>

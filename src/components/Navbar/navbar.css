@@ -11,3 +11,20 @@
     width: 80vw;
 }
 
+.loginBtn {
+    margin-right: 14px;
+}
+
+.logoutBtn {
+    margin-top: 10px;
+    margin-right: 15px;
+}
+
+.test {
+    margin-top: 12px;
+}
+
+.listBtn {
+    display: flex;
+}
+

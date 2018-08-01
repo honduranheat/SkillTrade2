@@ -8,6 +8,7 @@ import { ListGroup, ListGroupItem } from 'reactstrap';
 import { List } from '../List';
 import { Col, Row, Container } from '../Grid';
 import API from '../utils/API';
+import './style.css';
 //import singleListing from '../singleListing'
 
 class Browse extends Component {
@@ -74,10 +75,7 @@ class Browse extends Component {
 										<ListGroup key={listing._id}>
 											<Link to={'/listing/' + listing._id}>
 												<ListGroupItem className="listTitle"> {listing.title} </ListGroupItem>
-												<ListGroupItem> {listing.description} </ListGroupItem>
-												<ListGroupItem> {listing.duration} </ListGroupItem>
-												<ListGroupItem> {listing.datesAvailable} </ListGroupItem>
-												<ListGroupItem> {listing.tags} </ListGroupItem>
+												
 											</Link>
 										</ListGroup>
 									))}

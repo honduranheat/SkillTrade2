@@ -11,7 +11,12 @@ Button {
 }
 
 Card {
-    width: 80vh;
+    width: 700px;
     margin: auto;
     text-align: center;
 } 
+
+.singleMessCard {
+    max-width: 500px;
+    margin: auto;
+}
