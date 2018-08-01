@@ -191,6 +191,60 @@ class Profile extends Component {
       location: this.state.location,
       skills: this.state.skills
     };
+    
+	render() {
+		return (
+			<section>
+        <Container>
+            <Card body border color="danger">
+                <CardHeader>
+                <h1>_id: {this.props.id}</h1>
+                <h1>karma chips : {this.state.karmaChips}</h1>
+                <UserProfile karmaChips={this.state.karmaChips} imageLink={this.state.imageLink} firstName={this.state.firstName} lastName={this.state.lastName} skills={this.state.skills} location={this.state.location} dateJoined={this.state.dateJoined} />
+                </CardHeader>
+                <CardBody>
+                <Form>
+                    <FormGroup>
+                        <Label for="firstName" className="form-text">
+                            First Name
+                        </Label>
+                        <div className="">
+                            <Input type="title" className="form-control text-center" id="firstName" name="firstName" placeholder={this.state.firstName} onChange={this.handleInputChange}/>
+                        </div>
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="lastName" className="form-text">
+                            Last Name
+                        </Label>
+                        <div className="">
+                            <Input type="title" className="form-control text-center" id="lastName" name="lastName" placeholder={this.state.lastName} onChange={this.handleInputChange}/>
+                        </div>
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="email" className="form-text">
+                            Email?
+                        </Label>
+                        <div className="">
+                            <Input type="title" className="form-control text-center" id="email" name="email" placeholder={this.state.email} onChange={this.handleInputChange}/>
+                        </div>
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="imageLink" className="form-text">
+                            Image Link?
+                        </Label>
+                        <div className="">
+                            <Input type="title" className="form-control text-center" id="imageLink" name="imageLink" placeholder={this.state.imageLink} onChange={this.handleInputChange}/>
+                        </div>
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="birthdate" className="form-text">
+                            Birthday (mm/dd/yy)?
+                        </Label>
+                        <div className="">
+                            <Input type="title" className="form-control text-center" id="birthdate" name="birthdate" placeholder={this.state.birthdate} onChange={this.handleInputChange}/>
+                        </div>
+                    </FormGroup>
+=======
     console.log(profileData);
     // let req = {
     //   url: "/api/profiles/" + this.state.id,
@@ -211,137 +265,137 @@ class Profile extends Component {
       .catch(err => console.log(err));
   };
 
-  render() {
-    return (
-      <div>
-        <section>
-          <Container>
-            <Card>
-              <h1>{`★${this.state.average}`}</h1>
-              <h1>_id: {this.props.id}</h1>
-              <form>
-                <div className="form-group">
-                  <label for="firstName" className="form-text">
-                    First Name
-                  </label>
-                  <div className="">
-                    <input
-                      type="title"
-                      className="form-control text-center"
-                      id="firstName"
-                      name="firstName"
-                      placeholder={this.state.firstName}
-                      onChange={this.handleInputChange}
-                    />
-                  </div>
-                </div>
-                <div className="form-group">
-                  <label for="lastName" className="form-text">
-                    Last Name
-                  </label>
-                  <div className="">
-                    <input
-                      type="title"
-                      className="form-control text-center"
-                      id="lastName"
-                      name="lastName"
-                      placeholder={this.state.lastName}
-                      onChange={this.handleInputChange}
-                    />
-                  </div>
-                </div>
-                <div className="form-group">
-                  <label for="email" className="form-text">
-                    Email?
-                  </label>
-                  <div className="">
-                    <input
-                      type="title"
-                      className="form-control text-center"
-                      id="email"
-                      name="email"
-                      placeholder={this.state.email}
-                      onChange={this.handleInputChange}
-                    />
-                  </div>
-                </div>
-                <div className="form-group">
-                  <label for="imageLink" className="form-text">
-                    Image Link?
-                  </label>
-                  <div className="">
-                    <input
-                      type="title"
-                      className="form-control text-center"
-                      id="imageLink"
-                      name="imageLink"
-                      placeholder={this.state.imageLink}
-                      onChange={this.handleInputChange}
-                    />
-                  </div>
-                </div>
-                <div className="form-group">
-                  <label for="birthdate" className="form-text">
-                    Birthday (mm/dd/yy)?
-                  </label>
-                  <div className="">
-                    <input
-                      type="title"
-                      className="form-control text-center"
-                      id="birthdate"
-                      name="birthdate"
-                      placeholder={this.state.birthdate}
-                      onChange={this.handleInputChange}
-                    />
-                  </div>
-                </div>
-                <div className="form-group">
-                  <label for="location" className="form-text">
-                    Where are you located?
-                  </label>
-                  <div className="">
-                    <input
-                      type="title"
-                      className="form-control text-center"
-                      id="location"
-                      name="location"
-                      placeholder={this.state.location}
-                      onChange={this.handleInputChange}
-                    />
-                  </div>
-                </div>
-                <div className="form-group">
-                  <label for="skills" className="form-text">
-                    Description of your Skills
-                  </label>
-                  <div className="">
-                    <textarea
-                      className="form-control text-center"
-                      id="skills"
-                      name="skills"
-                      placeholder={this.state.skills}
-                      onChange={this.handleInputChange}
-                    />
-                  </div>
-                </div>
-                <button onClick={this.handleFormSubmit}>Update Profile</button>
-                <div>
-                  <Popover
-                    id="Popover1"
-                    placement="bottom"
-                    isOpen={this.state.popoverOpen}
-                    target="Popover1"
-                    toggle={this.toggle}
-                  >
-                    <PopoverHeader>Thanks For The Review</PopoverHeader>
-                    <PopoverBody>
-                      You've earned a KarmaChip! (˚◒˚)
-                    </PopoverBody>
-                  </Popover>
-                </div>
-              </form>
+//   render() {
+//     return (
+//       <div>
+//         <section>
+//           <Container>
+//             <Card>
+//               <h1>{`★${this.state.average}`}</h1>
+//               <h1>_id: {this.props.id}</h1>
+//               <form>
+//                 <div className="form-group">
+//                   <label for="firstName" className="form-text">
+//                     First Name
+//                   </label>
+//                   <div className="">
+//                     <input
+//                       type="title"
+//                       className="form-control text-center"
+//                       id="firstName"
+//                       name="firstName"
+//                       placeholder={this.state.firstName}
+//                       onChange={this.handleInputChange}
+//                     />
+//                   </div>
+//                 </div>
+//                 <div className="form-group">
+//                   <label for="lastName" className="form-text">
+//                     Last Name
+//                   </label>
+//                   <div className="">
+//                     <input
+//                       type="title"
+//                       className="form-control text-center"
+//                       id="lastName"
+//                       name="lastName"
+//                       placeholder={this.state.lastName}
+//                       onChange={this.handleInputChange}
+//                     />
+//                   </div>
+//                 </div>
+//                 <div className="form-group">
+//                   <label for="email" className="form-text">
+//                     Email?
+//                   </label>
+//                   <div className="">
+//                     <input
+//                       type="title"
+//                       className="form-control text-center"
+//                       id="email"
+//                       name="email"
+//                       placeholder={this.state.email}
+//                       onChange={this.handleInputChange}
+//                     />
+//                   </div>
+//                 </div>
+//                 <div className="form-group">
+//                   <label for="imageLink" className="form-text">
+//                     Image Link?
+//                   </label>
+//                   <div className="">
+//                     <input
+//                       type="title"
+//                       className="form-control text-center"
+//                       id="imageLink"
+//                       name="imageLink"
+//                       placeholder={this.state.imageLink}
+//                       onChange={this.handleInputChange}
+//                     />
+//                   </div>
+//                 </div>
+//                 <div className="form-group">
+//                   <label for="birthdate" className="form-text">
+//                     Birthday (mm/dd/yy)?
+//                   </label>
+//                   <div className="">
+//                     <input
+//                       type="title"
+//                       className="form-control text-center"
+//                       id="birthdate"
+//                       name="birthdate"
+//                       placeholder={this.state.birthdate}
+//                       onChange={this.handleInputChange}
+//                     />
+//                   </div>
+//                 </div>
+//                 <div className="form-group">
+//                   <label for="location" className="form-text">
+//                     Where are you located?
+//                   </label>
+//                   <div className="">
+//                     <input
+//                       type="title"
+//                       className="form-control text-center"
+//                       id="location"
+//                       name="location"
+//                       placeholder={this.state.location}
+//                       onChange={this.handleInputChange}
+//                     />
+//                   </div>
+//                 </div>
+//                 <div className="form-group">
+//                   <label for="skills" className="form-text">
+//                     Description of your Skills
+//                   </label>
+//                   <div className="">
+//                     <textarea
+//                       className="form-control text-center"
+//                       id="skills"
+//                       name="skills"
+//                       placeholder={this.state.skills}
+//                       onChange={this.handleInputChange}
+//                     />
+//                   </div>
+//                 </div>
+//                 <button onClick={this.handleFormSubmit}>Update Profile</button>
+//                 <div>
+//                   <Popover
+//                     id="Popover1"
+//                     placement="bottom"
+//                     isOpen={this.state.popoverOpen}
+//                     target="Popover1"
+//                     toggle={this.toggle}
+//                   >
+//                     <PopoverHeader>Thanks For The Review</PopoverHeader>
+//                     <PopoverBody>
+//                       You've earned a KarmaChip! (˚◒˚)
+//                     </PopoverBody>
+//                   </Popover>
+//                 </div>
+//               </form>
 
-              <Container>
+//               <Container>
                 {/* <div id="modal">
         <Button color="danger" onClick={this.toggle}>{this.props.buttonLabel}</Button>
         <Modal isOpen={this.state.modal} fade={false} toggle={this.toggle} className={this.props.className}>
@@ -397,7 +451,6 @@ class Profile extends Component {
                   </Form>
                 </div>
                 <div id="reviewDiv" />
-              </Container>
               <Link to={`/messaging/${this.props.username}`}>Messaging</Link>
               {/* {this.state.loggedIn && <Route path="/browse" component={Browse} />} */}
               {/* {console.log("/messaging/" + this.props.username)} */}
