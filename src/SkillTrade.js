@@ -7,6 +7,7 @@ import Signup from './components/login/sign-up';
 import LoginForm from './components/login/login-form';
 import Navbar2 from './components/Navbar';
 import Home from './components/Home/home';
+import userHome from './components/Home/userHome';
 
 
 import Browse from './components/Listing/browse';

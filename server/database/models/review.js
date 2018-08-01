@@ -3,14 +3,21 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var ReviewSchema = new Schema({
-    body: {
+    message: {
         type: String,
-        required: true
+        // required: true
     },
     rating: {
-        type: Number,
-        required: true
-    }
+        type: String,
+        // required: true
+    },
+    reviewer: {
+        type: String,
+    },
+    receiverId: {
+        type: String
+    } 
+
 });
 var Review = mongoose.model("Review", ReviewSchema);
 

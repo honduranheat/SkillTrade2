@@ -53,42 +53,10 @@ class Messaging extends Component {
   getMessageBody = id => {
     console.log(id);
     API.getMessageBody(id).then(res => {
-      // this.setState(state => ({
-      //   messageBody: [...state.messageBody, res]
-      // }))
       this.state.messageProps.push(res);
-      // this.setState(
-      //   this.state
-      // )
-      // this.state
-      // for(var i =0; i < this.state.messageBody.length ; i++) {
-      // console.log(this.state.messageProps)
-      // console.log(res.data[0].body + "@2222222");
-      // // ReactDOM.append(res.data[0].body, document.getElementById('messageDiv'));
-      // console.log(this.state.messageBody[0].data[0].body + "@#####33");
-      // var para = document.createElement("p");
-      // var node = document.createTextNode(res.data[0].body);
-      // var delButton = document.createElement("BUTTON");
-      // var t = document.createTextNode("Delete")
-
-      // para.appendChild(node);
-      // delButton.appendChild(t);
-      // var element = document.getElementById("messageDiv");
-      // element.appendChild(para);
-      // element.appendChild(delButton);
-      // delButton.onclick = function(event) {
-      //   event.preventDefault();
-      //   console.log(node)
-      //   API.deleteMessage(node)
-      // }
-      // // delButton.onClick(alert(t))
-      // // return res.data[0].body; //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-      //  return para;
-      // this.renderMessages(res.data[0].body);
     });
   };
   displayMessages = event => {
-    // e.preventDefault();
     event.preventDefault();
   this.state.messageBody.map(message => {
       return (
@@ -100,29 +68,25 @@ class Messaging extends Component {
       );
     });
   };
-  renderMessages = event => {
-    event.preventDefault();
-    this.state.messageBody.map(message => {
-      console.log("renderMessages:" + message.data[0].body);
-      return(console.log('noice'));
-      // this.render() {
-      //   return (
 
-      //   )
-      // }
-    });
-  };
+  removeMessage = id => {
+    console.log(id + "LINE 84!!!!!!!!!!!!!!!!!!!!!!!!1")
+    document.getElementById(id).remove();
+  }
   deleteFromProps = id => {
-    console.log(this.state.messageProps[0].data[0]._id);
+    console.log(this.state.messageProps[0].data);
     // var mongoose = require("mongoose");
     // id = ObjectId(id).str;
     console.log(id)
-    for (var i = 0; i < this.state.messageProps; i++) {
-      console.log(this.state.messageProps[i].data[0]._id);
+    for (var i = 0; i < this.state.messageProps.length; i++) {
+      console.log(this.state.messageProps[i].data[0]._id + "HEEEERRRRE))))))))))))))))))))))))))");
       if (this.state.messageProps[i].data[0]._id == id) {
         console.log("118");
-        this.provideMessagesB();
-      } else {console.log("120")};
+        this.state.messageProps.splice(i, 1)
+        console.log(this.state.messageProps)
+        this.provideMessagesB()
+        break;
+      } else {console.log("120"); i++};
     }
   };
   deleteMessage = (username, id) => {
@@ -130,7 +94,8 @@ class Messaging extends Component {
     API.deleteMessage({
       username: username,
       id: id
-    }).then(console.log(this.state.messageProps), this.deleteFromProps(id));
+    })
+    this.deleteFromProps(id);
 
     // this.state.messageProps.map(message => {
     //   if (message.data[0]._id === id) {
@@ -143,18 +108,39 @@ class Messaging extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     console.log(this.props.username + "LINE 109!!!!!!!!!!!!!!!!!!");
-    if (this.state.receiver && this.state.body) {
+if (this.state.receiver && this.state.body) {
       API.sendMessage({
         receiver: this.state.receiver,
         body: this.state.body,
         sender: this.props.username
       })
-        .then(res => {
-          console.log(res);
-        })
+        // .then(res => {
+        //   console.log(res)
+
+          // if(res === this.props.username) {
+          //   console.log("Same User")
+          // }
+          // else {
+          //   console.log(
+          //   "different user"
+          //   )
+          // }
+          // console.log(res);
+          // this.componentDidMount()
+    
         // .then(res => this.loadBooks())
         .catch(err => console.log(err));
+        console.log("here 133")
+        if(this.state.receiver === this.props.username) {
+          console.log("135 Receiver is the same")
+        }
+        else {
+          console.log("135 Receiver isnt same")
+
+        }
+        // this.getUser(this.props.username)
     }
+
   };
   sayHi = event => {
     event.preventDefault();
