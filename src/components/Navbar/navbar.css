@@ -3,9 +3,16 @@
 
 #navText {
     font-family: 'Righteous', cursive;
+    margin: auto;
 }
 
 #contain {
     width: 80vw;
+}
+
+#drop{
+    margin: auto;
+    text-align: center;
+    display: inline
 }
 
