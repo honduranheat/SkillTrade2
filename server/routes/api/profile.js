@@ -16,10 +16,12 @@ router.route("/username/:username")
 
 router.route("/exist/:id/:username")
     .get(profileController.checkIfProfileExists);
-
+router.route("/post")
+    .post(profileController.addReview);
 // Route for saving/updating an Profiles's number of karmaChips
 router.route("/chips/:id/:chips")
     .put(profileController.addChips);
-
+router.route("/reviews/:id")
+    .get(profileController.getReviewBody)
 
 module.exports = router;

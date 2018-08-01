@@ -1,10 +1,7 @@
 const db = require("../database/models");
-
 var today = new Date();
 var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-
 module.exports = {
-
     checkIfProfileExists: function(req, res){
         db.Profile.findOne({_id: req.params.id})
         .then(function(error, response){
@@ -29,9 +26,7 @@ module.exports = {
             if (response) res.send(response);
             if (error) res.send(error);
         });
-
     },
-
     // createProfile: function(req, res) {
     //     db.Profile.create({
     //         userID: req.params.id,
@@ -43,7 +38,6 @@ module.exports = {
     //         res.json(err);
     //     });
     // },
-
     updateProfile: function(req, res) {
         console.log("updateProfile function req: " + req);
         console.log(req.body);
@@ -111,7 +105,6 @@ module.exports = {
             res.json(err);
         });
     },
-
     // Route for saving/updating an Profiles's number of karmaChips
     addChips: function(req, res) {
         
@@ -122,5 +115,4 @@ module.exports = {
             res.send(dbProfile);
         });
     }
-
 };

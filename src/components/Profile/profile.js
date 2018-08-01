@@ -2,12 +2,11 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 // import API from '../utils/API';
 import axios from 'axios';
-import Wrapper from '../Wrapper';
+
 import UserProfile from "../userprofile";
 import {Card, CardBody, CardHeader, Container,  Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 class Profile extends Component {
-
     
     state = {
         id: this.props.id,
@@ -25,22 +24,11 @@ class Profile extends Component {
         karmaChips: "",
         dateJoined: ""
     };
-
-    // getID() {
-    //   const userID = props =>  (
-    //     props.id
-    //   )
-    //   setState({
-    //     _id: userID
-    //   });
-    // };
-
     componentDidMount() {
-      // this.getID();
+      
         this.loadProfile();
     };
     
-
     getProfile(id, username){
       axios.get("/api/profiles/exist/" + id + "/" + username )
       .then(response => {
@@ -49,8 +37,6 @@ class Profile extends Component {
       })
       .catch(err => console.log(err));
     ;}
-
-
     loadProfile() {
         this.getProfile(this.state.id, this.state.usr);
     };
@@ -95,9 +81,9 @@ class Profile extends Component {
             .catch(err => console.log(err));
     };
     
-	render() {
-		return (
-			<section>
+    render() {
+        return (
+            <section>
                 <Container>
                     <Card body border color="danger">
                         <CardHeader>
@@ -176,11 +162,8 @@ class Profile extends Component {
                 </CardBody> 
             </Card>
         </Container>
-	</section>
-		);
-	}
+    </section>
+        );
+    }
 };
-
-
-
 export default Profile;
