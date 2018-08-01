@@ -35,38 +35,15 @@ class Profile extends Component {
       average: ""
     };
   }
-  //   state = {
-  //     id: this.props.id,
-  //     profile: [],
-  //     _id: "",
-  //     firstName: "",
-  //     lastName: "",
-  //     email: "",
-  //     imageLink: "",
-  //     birthdate: "",
-  //     location: "",
-  //     skills: "",
-  //     reivews: [],
-  //     reviewer: "",
-  //     rating: "",
-  //     message: "",
-  //     reviewPoints: [],
-  //     average: ""
-  //   };
-
-  toggle = () => {
-    // event.preventDefault();
+  componentDidMount() {
+    this.loadProfile();
+  }
+  toggle() {
     this.setState({
       popoverOpen: true
     });
-    // this.handleFormSubmit2();
   };
 
-  componentDidMount() {
-    // this.getID();
-    // this.toggle()
-    this.loadProfile();
-  }
 
   getUser = username => {
     API.getUser(username).then(res => {
@@ -95,29 +72,27 @@ class Profile extends Component {
           average: average
         });
         console.log(this.state.average);
-        this.toggle();
+        // this.toggle();
       }
     }
   };
   renderReview = reviewData => {
-      console.log(reviewData)
-      var reviewItem = (
-        <div className="reviewClass" id={reviewData._id} key={reviewData._id}>
+    console.log(reviewData);
+    var reviewItem = (
+      <div className="reviewClass" id={reviewData._id} key={reviewData._id}>
         <p>From:{reviewData.reviewer}</p>
         <p>Rating:{reviewData.rating}</p>
         <p>Message:{reviewData.message}</p>
         {this.state.reviewPoints.push(reviewData.rating)}
       </div>
-
-      )
-      this.getReviewAverage()
-      ReactDOM.render(reviewItem, document.getElementById("reviewDiv"));
-
-  }
+    );
+    this.getReviewAverage();
+    ReactDOM.render(reviewItem, document.getElementById("reviewDiv"));
+  };
   getReviews = id => {
     console.log(id);
     API.getReviewBody(id).then(res => {
-      console.log(res.data[0]);
+      console.log(res.data);
       var reviewItems = res.data.map(review => (
         // console.log(review)
         <div className="reviewClass" id={review._id} key={review._id}>
@@ -148,13 +123,21 @@ class Profile extends Component {
           skills: response.data.skills,
           reviews: response.data.reviews
         });
-        console.log(this.state._id + " line 66");
-        this.getReviews(this.state._id);
-      })
+      this.getReviews(this.state._id)
+    })
+      //   console.log(this.state._id))
       .catch(err => console.log(err));
-  };
 
+    };
+  // waitThenRemove = () => {
+  //   setTimeout(function(){
+  //     document.getElementById("reviewForm").remove();
+  //     document.getElementById("popover").remove();
+
+  //   }, 3000);
+  // }
   loadProfile() {
+    console.log(this.state.id + "158")
     this.getProfile(this.state.id);
   }
 
@@ -167,12 +150,13 @@ class Profile extends Component {
   saveReview = reviewData => {
     API.saveReview(reviewData);
     // this.state.reviews.push(reviewData)
-    this.getReviews(this.state._id)
-    this.toggle();
+    this.getReviews(this.state._id);
+    this.setState({ popoverOpen: true });
+    // this.waitThenRemove()
   };
   handleFormSubmit2 = event => {
     event.preventDefault();
-    // this.toggle();
+    this.toggle();
     console.log(this.state._id);
     var reviewData = {
       reviewer: this.props.username,
@@ -180,7 +164,17 @@ class Profile extends Component {
       message: this.state.message,
       receiverId: this.state._id
     };
+    // if (reviewData.receiverId === this.props.id) {
+    //   console.log("same id");
+    // } else {
+    //   console.log("diff id");
+    // }
     this.saveReview(reviewData);
+    document.getElementById("exampleText").disabled =true;
+    document.getElementById("exampleSelect").disabled =true;
+    document.getElementById("Popover1").disabled =true;
+
+    // document.getElementById("Popover1").disabled = true;
     // axios.put("/api/profiles/" + this.state.id, {
 
     // })
@@ -334,16 +328,15 @@ class Profile extends Component {
                 <button onClick={this.handleFormSubmit}>Update Profile</button>
                 <div>
                   <Popover
+                    id="Popover1"
                     placement="bottom"
                     isOpen={this.state.popoverOpen}
                     target="Popover1"
                     toggle={this.toggle}
-                    
                   >
                     <PopoverHeader>Thanks For The Review</PopoverHeader>
-                    <PopoverBody id="myPopover">
-                      You've earned a KarmaChip!
-                                (˚◒˚)
+                    <PopoverBody>
+                      You've earned a KarmaChip! (˚◒˚)
                     </PopoverBody>
                   </Popover>
                 </div>
@@ -362,46 +355,47 @@ class Profile extends Component {
           </ModalFooter>
         </Modal>
       </div> */}
-                <Form>
-                  <FormGroup>
-                    <h1>Leave a Review</h1>
-                    <Label for="exampleSelect">Rating</Label>
-                    <Input
-                      type="select"
-                      name="rating"
-                      id="exampleSelect"
-                      onChange={this.handleInputChange}
-                      value={this.state.rating}
-                      // onClick={console.log(this.state.rating)}
+                <div id="reviewForm">
+                  <Form>
+                    <FormGroup>
+                      <h1>Leave a Review</h1>
+                      <Label for="exampleSelect">Rating</Label>
+                      <Input
+                        type="select"
+                        name="rating"
+                        id="exampleSelect"
+                        onChange={this.handleInputChange}
+                        value={this.state.rating}
+                        // onClick={console.log(this.state.rating)}
+                      >
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                      </Input>
+                    </FormGroup>
+                    <FormGroup>
+                      <Label for="exampleText">Review</Label>
+                      <Input
+                        type="textarea"
+                        name="message"
+                        id="exampleText"
+                        onChange={this.handleInputChange}
+                        value={this.state.message}
+                      />
+                    </FormGroup>
+                    <Button
+                      id="Popover1"
+                      disabled={!this.state.message || !this.state.rating}
+                      style={{ margin: "auto" }}
+                      onClick={this.handleFormSubmit2}
+                      // toggle={this.toggle}
                     >
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
-                    </Input>
-                  </FormGroup>
-                  <FormGroup>
-                    <Label for="exampleText">Review</Label>
-                    <Input
-                      type="textarea"
-                      name="message"
-                      id="exampleText"
-                      onChange={this.handleInputChange}
-                      value={this.state.message}
-                    />
-                  </FormGroup>
-                  <Button
-                    id="Popover1"
-                    disabled={!this.state.message || !this.state.rating}
-                    style={{ margin: "auto" }}
-                    onClick={this.handleFormSubmit2}
-                    toggle={this.toggle}
-
-                  >
-                    Post
-                  </Button>
-                </Form>
+                      Post
+                    </Button>
+                  </Form>
+                </div>
                 <div id="reviewDiv" />
               <Link to={`/messaging/${this.props.username}`}>Messaging</Link>
               {/* {this.state.loggedIn && <Route path="/browse" component={Browse} />} */}
