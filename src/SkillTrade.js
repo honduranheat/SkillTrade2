@@ -6,16 +6,18 @@ import { Route } from 'react-router-dom';
 import Signup from './components/login/sign-up';
 import LoginForm from './components/login/login-form';
 import Navbar2 from './components/Navbar';
-import Home from './components/pages/home';
+import Home from './components/Home/home';
 import UserProfiles from './components/pages/userprofiles';
+import addListing from './components/Listing/addListing';
+
+import Browse from './components/Listing/browse';
+import Profile from './components/Profile/profile';
+import Messaging from './components/Message/messaging';
+
 
 import singleListing from './components/singleListing/singleListing.js';
-import Browse from './components/pages/browse';
-import Profile from './components/pages/profile';
-import Ranking from './components/pages/topusers';
-import Messaging from './components/pages/messaging';
-import addListing from './components/pages/addListing';
-//import Router from ReactRouter.Route;
+
+
 //import Switch from ReactRouter.Switch;
 // import Wrapper from './components/Wrapper';
 import Footer from './components/Footer';
@@ -105,7 +107,7 @@ class App extends Component {
 						<Route path="/messaging" render={() => <Messaging username={this.state.username} />} />
 					)}
 				</section>
-				</Wrapper>
+				
 				<Route exact path="/listing/:id" component={singleListing} />
 				<Footer/>
 			</section>
