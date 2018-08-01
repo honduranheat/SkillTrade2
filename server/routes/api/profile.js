@@ -8,7 +8,10 @@ router.route("/:id")
     .get(profileController.getUserProfile)
     .put(profileController.updateProfile);
 
-router.route("/exist/:id")
+router.route("/username/:username")
+    .get(profileController.getProfilebyUsername);
+
+router.route("/exist/:id/:username")
     .get(profileController.checkIfProfileExists);
 
 // Route for saving/updating an Profiles's number of karmaChips
