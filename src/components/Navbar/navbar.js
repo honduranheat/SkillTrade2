@@ -159,87 +159,90 @@ class Navbar2 extends Component {
                 {loggedIn ? (
                   <section className="float-left">
                     <NavItem>
-                      <Link to="#" id="navText" onClick={this.logout}>
-                        <span className="text-success">Logout</span>
-                      </Link>
+                      <NavLink href="#" id="navText" onClick={this.logout}>
+                        {/* <span className="text-success"> */}
+                        Logout
+                        {/* </span> */}
+                      </NavLink>
                     </NavItem>
                   </section>
                 ) : (
                   <section>
                     <section className="float-left">
                       <NavItem>
-                        <Link to="/login">
-                          <span id="navText" className="text-success">
+                        <NavLink href="/login" id="navText">
+                          {/* <span id="navText" className="text-success"> */}
                             Login
-                          </span>
-                        </Link>
+                          {/* </span> */}
+                        </NavLink>
                       </NavItem>
                     </section>
                     <section className="float-right">
                       <NavItem>
-                        <Link to="/signup">
-                          <span id="navText" className="text-success">
+                        <NavLink href="/signup" id="navText">
+                          {/* <span id="navText" className="text-success"> */}
                             Sign Up
-                          </span>
-                        </Link>
+                          {/* </span> */}
+                        </NavLink>
                       </NavItem>
                     </section>
                   </section>
                 )}
-                <NavItem>
-                  <NavLink
-                    target="_blank"
-                    id= "navText"
-                    href="https://github.com/groupProject333/SkillTrade2"
-                  >
-                    GitHub
-                  </NavLink>
-                </NavItem>
-                <UncontrolledDropdown nav inNavbar>
+                <UncontrolledDropdown nav inNavbar id="drop">
                   <DropdownToggle nav caret>
-                    <span id="navText" className="text-success">
+                    <span id="navText">
                       Options
                     </span>
                   </DropdownToggle>
                   <DropdownMenu right>
+                  <DropdownItem>
+                  <NavItem>
+                  <NavLink target="_blank" id= "navText" href="https://github.com/groupProject333/SkillTrade2" >
+                    GitHub
+                  </NavLink>
+                </NavItem>
+                </DropdownItem>
+                <DropdownItem divider />
                     <DropdownItem>
                       <NavItem>
-                        <Link to="/browse">
-                          <span id="navText" className="text-success">
+                        <NavLink href="/browse" id="navText">
+                          {/* <span id="navText"> */}
                             Browse
-                          </span>
-                        </Link>
+                          {/* </span> */}
+                        </NavLink>
                       </NavItem>
                     </DropdownItem>
                     <DropdownItem>
                       <NavItem>
-                        <Link to="/profile">
-                          <span id="navText" className="text-success">
+                        <NavLink href="/profile" id="navText">
+                          {/* <span id="navText"> */}
                             Profile
-                          </span>
-                        </Link>
+                          {/* </span> */}
+                        </NavLink>
                       </NavItem>
                     </DropdownItem>
                     <DropdownItem>
                       <NavItem>
-                        <Link to="/addListing">
-                          <span id="navText" className="text-success">
+                        <NavLink href="/addListing" id="navText">
+                          {/* <span id="navText"> */}
                             Add a New Listing
-                          </span>
-                        </Link>
+                          {/* </span> */}
+                        </NavLink>
                       </NavItem>
                     </DropdownItem>
                     <DropdownItem>
                       <NavItem>
-                        <Link to="/messaging/">
-                          <span id="navText" className="text-success">
+                        <NavLink href="/messaging/" id="navText">
+                          {/* <span id="navText"> */}
                             Messages
-                          </span>
-                        </Link>
+                          {/* </span> */}
+                        </NavLink>
                       </NavItem>
                     </DropdownItem>
                     <DropdownItem divider />
-                    <DropdownItem>Reset</DropdownItem>
+                    <DropdownItem>
+                      Reset
+                    </DropdownItem>
                   </DropdownMenu>
                 </UncontrolledDropdown>
               </Nav>
