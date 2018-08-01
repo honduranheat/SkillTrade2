@@ -11,12 +11,16 @@ body, html{
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  text-align: center;
+  margin: auto;
 }
 
 .Site-content {
   flex: 1 0 auto;
   padding: var(--space) var(--space) 0;
   width: 100%;
+  text-align: center;
+  margin: auto;
 }
 
 .Site-content:after {
@@ -30,7 +34,7 @@ body, html{
 .App{
   /* background-image: url('./components/Images/adviror.jpg'); */
    /* Full height */
-   background-image: url('../src/components/Images/clouds.jpg');
+   background-image: url('../src/components/Images/wood.jpg');
    background-color: darkblue;
    height: 100%; 
 
@@ -39,6 +43,7 @@ body, html{
    background-repeat: no-repeat;
    background-size: cover;
    text-align: center;
+   margin: auto;
 }
 
 
