@@ -3,11 +3,15 @@ import { Link } from "react-router-dom";
 import API from "../utils/API";
 import axios from "axios";
 import ReactDOM from "react-dom";
-import { Popover, PopoverHeader, PopoverBody } from "reactstrap";
+import { Popover, PopoverHeader, PopoverBody, Card, CardBody, CardHeader, Container,  Button, Form, FormGroup, Label, Input  } from "reactstrap";
 import "./profile.css";
 import { Card, Container } from "reactstrap";
 import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+// import API from '../utils/API';
+
+import Wrapper from '../Wrapper';
+
 
 class Profile extends Component {
   constructor(props) {

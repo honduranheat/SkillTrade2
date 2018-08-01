@@ -18,4 +18,4 @@ router.route("/chips/:id/:chips")
 router.route("/reviews/:id")
     .get(profileController.getReviewBody)
 
-module.exports = router;
+module.exports = router; 

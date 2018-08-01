@@ -387,92 +387,14 @@ class Messaging extends Component {
               </Button>
 
               <MessageList>
-                {/* <button onClick={function displayMessages( event)  {
-            <button onClick={function displayMessages( event)  {
-              event.preventDefault();
-              this.state.messageBody.map(message => {
-                  return (
-            
-                    <MessageListItem id="center" >
-                      <strong>
-                        <h1>{message.data[0].body}</h1>
-                      </strong>
-                    </MessageListItem>
-                    
-                  );
-//                 }) */}
-                {/* }}>View Messages</button> */}
+              
 
                 <div id="messageDiv" />
               </MessageList>
             </Form>
           </CardBody>
         </Card>
-        {/* {this.state.messageBody.map(message => {
-                })
-            }}>View Messages</button>
-
-            <div id="messageDiv"></div>
-            {/* {this.state.messageBody.map(message => {
-                return (
-                  <MessageListItem id="center" >
-                    <strong>
-                      <h1>{console.log(message.data[0].body)}</h1>
-                    </strong>
-                  </MessageListItem>
-                  
-                ); */}
-        {/* })} */}
-
-        {/* <MessageListItem id="center" key={message.id}> 
-                  <strong>
-                    <h1>{message.body}</h1>
-                    <h1>{message.data.body}</h1>
-                  </strong>
-                  </MessageListItem>
-                                )
-              })} */}
-        {/* <FormGroup>
-              <Label for="exampleEmail">To (username):</Label>
-              <Input
-                type="textarea"
-                name="reveiver"
-                id="exampleEmail"
-                onChange={this.handleInputChange}
-                value={this.state.receiver}
-              />
-            </FormGroup>
-            <FormGroup>
-              <Label for="exampleEmail">To (username):</Label>
-              <Input
-                type="textarea"
-                name="reveiver"
-                id="exampleEmail"
-                onChange={this.handleInputChange}
-                value={this.state.receiver}
-              />
-            </FormGroup> */}
-
-        {/* {this.provideMessages} */}
-        {/* // res.data.map((message) => { */}
-        {/* //   return (
-            //     <div><h1>{message.props.children}</h1></div>
-            //   )
-            // })
-          
-          // [1].props.children
-
-          })
-        } */}
-        {/* ["0"].props.children */}
-
-        {/* <Card body outline color="warning">
-          <CardBody>
-          <h1 color="info" className="display-2 text-center">Inbox</h1>
-          {/* <p>{this.state.user}</p> */}
-        {/* </Form>
-          </CardBody>
-        </Card> */}
+      
       </div>
     );
   }
