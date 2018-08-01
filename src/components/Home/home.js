@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Search from "../Search";
 import DemoCarousel from "../Carousel";
 import Logo from "../Logo";
-
+  
 class Home extends Component {
   
 // if (loggedIn) {

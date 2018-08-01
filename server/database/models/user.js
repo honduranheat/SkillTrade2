@@ -12,6 +12,9 @@ const userSchema = new Schema({
 	},
 	review: {
 		type: [{type: Schema.Types.ObjectId, ref: "Reviews"}]
+	},
+	profile: {
+		type: [{type: Schema.Types.ObjectId, ref: "Reviews"}]
 	}
 })
 

@@ -16,8 +16,9 @@ export default {
 	getMessageBody: function(id) {
 		console.log('here API body' + id);
 		return axios.get('/message/' + id);
-	}, 
-	///////////////////////////////////////////////////////////////////
+	},
+	
+	////////////////////////////////////////////////////////////////
 	// Listing
 	getListings: function() {
 		console.log('hit browse api');
@@ -32,8 +33,17 @@ export default {
 		return axios.post('/listing/', listingData);
 	},
 
-	/////////////////////////////////////////////////////////////////////////////
-	// Profile
+	/////////////////////////////////////////////////////////////
+	// Reviews
+	saveReview: function(reviewData) {
+		console.log('hit review api');
+		return axios.post('/api/profiles/post', reviewData);
+	},
+
+	getReviewBody: function(id) {
+		console.log('hit review api  ' + id);
+		return axios.get('/api/profiles/reviews/' + id);
+	},
 	getProfile: function(id) {
 		axios.get('/api/profiles/exist/' + id).then(function(response) {
 			if (response === true) {

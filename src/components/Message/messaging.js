@@ -1,12 +1,15 @@
 import React, { Component } from "react";
-import API from "./../utils/API";
+import API from "../utils/API";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
-import { MessageListItem, MessageList } from "./../Message";
+import { MessageListItem, MessageList } from "./index";
 import ReactDOM from "react-dom";
-import DeleteBtn from "./../DeleteBtn";
+//import DeleteBtn from "./../DeleteBtn";
 import { UncontrolledCollapse, CardBody, Card } from "reactstrap";
-import "./../../App.css";
-import DeleteButton from "./../DeleteBtn";
+// import "./../../App.css";
+import DeleteButton from "./DeleteBtn";
+import './message.css'
+
+
 class Messaging extends Component {
   constructor(props) {
     super(props);
@@ -50,44 +53,12 @@ class Messaging extends Component {
   getMessageBody = id => {
     console.log(id);
     API.getMessageBody(id).then(res => {
-      // this.setState(state => ({
-      //   messageBody: [...state.messageBody, res]
-      // }))
       this.state.messageProps.push(res);
-      // this.setState(
-      //   this.state
-      // )
-      // this.state
-      // for(var i =0; i < this.state.messageBody.length ; i++) {
-      // console.log(this.state.messageProps)
-      // console.log(res.data[0].body + "@2222222");
-      // // ReactDOM.append(res.data[0].body, document.getElementById('messageDiv'));
-      // console.log(this.state.messageBody[0].data[0].body + "@#####33");
-      // var para = document.createElement("p");
-      // var node = document.createTextNode(res.data[0].body);
-      // var delButton = document.createElement("BUTTON");
-      // var t = document.createTextNode("Delete")
-
-      // para.appendChild(node);
-      // delButton.appendChild(t);
-      // var element = document.getElementById("messageDiv");
-      // element.appendChild(para);
-      // element.appendChild(delButton);
-      // delButton.onclick = function(event) {
-      //   event.preventDefault();
-      //   console.log(node)
-      //   API.deleteMessage(node)
-      // }
-      // // delButton.onClick(alert(t))
-      // // return res.data[0].body; //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-      //  return para;
-      // this.renderMessages(res.data[0].body);
     });
   };
   displayMessages = event => {
-    // e.preventDefault();
     event.preventDefault();
-    this.state.messageBody.map(message => {
+  this.state.messageBody.map(message => {
       return (
         <MessageListItem id="center">
           <strong>
@@ -97,28 +68,25 @@ class Messaging extends Component {
       );
     });
   };
-  renderMessages = event => {
-    event.preventDefault();
-    this.state.messageBody.map(message => {
-      console.log("renderMessages:" + message.data[0].body);
-      // this.render() {
-      //   return (
 
-      //   )
-      // }
-    });
-  };
+  removeMessage = id => {
+    console.log(id + "LINE 84!!!!!!!!!!!!!!!!!!!!!!!!1")
+    document.getElementById(id).remove();
+  }
   deleteFromProps = id => {
-    console.log(this.state.messageProps[0].data[0]._id);
+    console.log(this.state.messageProps[0].data);
     // var mongoose = require("mongoose");
     // id = ObjectId(id).str;
     console.log(id)
-    for (var i = 0; i < this.state.messageProps; i++) {
-      console.log(this.state.messageProps[i].data[0]._id);
+    for (var i = 0; i < this.state.messageProps.length; i++) {
+      console.log(this.state.messageProps[i].data[0]._id + "HEEEERRRRE))))))))))))))))))))))))))");
       if (this.state.messageProps[i].data[0]._id == id) {
         console.log("118");
-        this.provideMessagesB();
-      } else {console.log("120")};
+        this.state.messageProps.splice(i, 1)
+        console.log(this.state.messageProps)
+        this.provideMessagesB()
+        break;
+      } else {console.log("120"); i++};
     }
   };
   deleteMessage = (username, id) => {
@@ -126,7 +94,8 @@ class Messaging extends Component {
     API.deleteMessage({
       username: username,
       id: id
-    }).then(console.log(this.state.messageProps), this.deleteFromProps(id));
+    })
+    this.deleteFromProps(id);
 
     // this.state.messageProps.map(message => {
     //   if (message.data[0]._id === id) {
@@ -139,18 +108,39 @@ class Messaging extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     console.log(this.props.username + "LINE 109!!!!!!!!!!!!!!!!!!");
-    if (this.state.receiver && this.state.body) {
+if (this.state.receiver && this.state.body) {
       API.sendMessage({
         receiver: this.state.receiver,
         body: this.state.body,
         sender: this.props.username
       })
-        .then(res => {
-          console.log(res);
-        })
+        // .then(res => {
+        //   console.log(res)
+
+          // if(res === this.props.username) {
+          //   console.log("Same User")
+          // }
+          // else {
+          //   console.log(
+          //   "different user"
+          //   )
+          // }
+          // console.log(res);
+          // this.componentDidMount()
+    
         // .then(res => this.loadBooks())
         .catch(err => console.log(err));
+        console.log("here 133")
+        if(this.state.receiver === this.props.username) {
+          console.log("135 Receiver is the same")
+        }
+        else {
+          console.log("135 Receiver isnt same")
+
+        }
+        // this.getUser(this.props.username)
     }
+
   };
   sayHi = event => {
     event.preventDefault();
@@ -172,15 +162,15 @@ class Messaging extends Component {
         <li>Body:{d.data[0].body}</li>
         <DeleteButton
           onClick={() => this.deleteMessage(this.props.username, d.data[0]._id)}
-        >
+          color="primary" bsSize="lg" block >
           Delete
         </DeleteButton>
         <div>
-          <Button color="primary" id="toggler" style={{ marginBottom: "1rem" }}>
+          <Button color="primary" bsSize="lg" block id="toggler" style={{ marginBottom: "1rem", margin: 'auto'}}>
             Reply
           </Button>
           <UncontrolledCollapse toggler="#toggler">
-            <Card>
+            <Card body outline color="warning">
               <CardBody>
                 <Form>
                   <FormGroup>
@@ -192,10 +182,11 @@ class Messaging extends Component {
                       onChange={this.handleInputChange}
                       value={this.state.body}
                       onClick={this.setState({ receiver: d.data[0].sender })}
+                      bsSize="lg"
                     />
                     <Button
                       // disabled={!(this.state.body)}
-
+                      style={{margin: 'auto'}}
                       onClick={this.handleFormSubmit}
                     >
                       Send Message
@@ -237,7 +228,8 @@ class Messaging extends Component {
   render() {
     return (
       <div>
-        <div>
+        <Card id="mess" className="text-center" body outline color="danger">
+        <CardBody>
           <h1>Send Message</h1>
           <Form>
             <FormGroup>
@@ -248,6 +240,7 @@ class Messaging extends Component {
                 id="exampleText"
                 onChange={this.handleInputChange}
                 value={this.state.body}
+                bsSize="lg"
               />
             </FormGroup>
             <FormGroup>
@@ -258,16 +251,25 @@ class Messaging extends Component {
                 id="exampleEmail"
                 onChange={this.handleInputChange}
                 value={this.state.receiver}
+                bsSize="lg"
               />
             </FormGroup>
             <Button
               disabled={!(this.state.receiver && this.state.body)}
               onClick={this.handleFormSubmit}
-            >
+              color="primary" size="lg" block
+              style={{margin: 'auto'}} >
               Send Message
             </Button>
+            <h1 className="display-1">
+            Inbox
+            </h1>
+            
+            <Button onClick={this.provideMessagesB} color="primary" size="lg" block>Show Messages</Button>
             <MessageList>
+
               {/* <button onClick={function displayMessages( event)  {
+            <button onClick={function displayMessages( event)  {
               event.preventDefault();
               this.state.messageBody.map(message => {
                   return (
@@ -279,12 +281,19 @@ class Messaging extends Component {
                     </MessageListItem>
                     
                   );
-                }) */}
-              {/* }}>View Messages</button> */}
-              <Button onClick={this.provideMessagesB}>Show Messages</Button>
-              <div id="messageDiv" />
+//                 }) */}
+{/* }}>View Messages</button> */}
 
-              {/* {this.state.messageBody.map(message => {
+<div id="messageDiv" />
+</MessageList>
+</Form>
+</CardBody>
+</Card>
+            {/* {this.state.messageBody.map(message => {
+                })
+            }}>View Messages</button>
+            <div id="messageDiv"></div>
+            {/* {this.state.messageBody.map(message => {
                 return (
                   <MessageListItem id="center" >
                     <strong>
@@ -303,7 +312,6 @@ class Messaging extends Component {
                   </MessageListItem>
                                 )
               })} */}
-            </MessageList>
             {/* <FormGroup>
               <Label for="exampleEmail">To (username):</Label>
               <Input
@@ -324,7 +332,7 @@ class Messaging extends Component {
                 value={this.state.receiver}
               />
             </FormGroup> */}
-          </Form>
+          
           {/* {this.provideMessages} */}
           {/* // res.data.map((message) => { */}
           {/* //   return (
@@ -333,16 +341,17 @@ class Messaging extends Component {
             // })
           
           // [1].props.children
-
           })
         } */}
           {/* ["0"].props.children */}
-        </div>
 
-        <div>
-          <h1>Inbox</h1>
+        {/* <Card body outline color="warning">
+          <CardBody>
+          <h1 color="info" className="display-2 text-center">Inbox</h1>
           {/* <p>{this.state.user}</p> */}
-        </div>
+         {/* </Form>
+          </CardBody>
+        </Card> */}
       </div>
     );
   }
