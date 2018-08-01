@@ -52,5 +52,9 @@ export default {
 	},	
 	saveProfile: function(profileData) {
 		return axios.put("/api/profiles/"+ profileData._id, profileData);
+	},
+	updateChips: function(chips) {
+		return axios.put('/user/chips', chips);
+
 	}
 };
