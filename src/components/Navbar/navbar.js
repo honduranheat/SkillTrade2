@@ -152,9 +152,7 @@ class Navbar2 extends Component {
         {/* </Navbar> */}
         <div>
           <Navbar color="light" light expand="md">
-            <NavbarBrand href="/" id="navText">
-            Skill Trade
-            </NavbarBrand>
+            <NavbarBrand id="navText">Skill Trade</NavbarBrand>
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto" navbar>
