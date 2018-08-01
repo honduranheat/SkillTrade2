@@ -5,7 +5,6 @@ import axios from "axios";
 import ReactDOM from "react-dom";
 import { Popover, PopoverHeader, PopoverBody } from "reactstrap";
 import "./profile.css";
-import Wrapper from "../Wrapper";
 import { Card, Container } from "reactstrap";
 import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
