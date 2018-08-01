@@ -12,7 +12,11 @@ const userSchema = new Schema({
 	},
 	review: {
 		type: [{type: Schema.Types.ObjectId, ref: "Reviews"}]
-	}
+	},
+	profile: {
+		type: [{type: Schema.Types.ObjectId, ref: "Reviews"}]
+	},
+	chips: {type: Number, default: 10}
 })
 
 // Define schema methods
