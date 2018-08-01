@@ -18,7 +18,8 @@ export default {
 		console.log('here API body' + id);
 		return axios.get('/message/' + id);
 	},
-///////////////////////////////////////////////////////////////////
+///	build\index.html
+////////////////////////////////////////////////////////////////
     // Listing
     getListings: function() {
         console.log('hit browse api')
@@ -26,10 +27,19 @@ export default {
 	  },
 	  checkListing: function(id) {
 		return axios.get("/listing/" + id);
-	  },
+		},
+		saveReview: function(reviewData) {
+
+			console.log("hit review api");
+			return axios.post("/api/profiles/post", reviewData)
+		},
 	saveListing: function(listingData) {
 		console.log('hit listing api', listingData);
 		return axios.post('/listing/', listingData);
+	},
+	getReviewBody: function(id) {
+		console.log("hit review api  " + id);
+		return axios.get("/api/profiles/reviews/" + id)
 	},
 	getProfile: function(id) {
 		axios.get("/api/profiles/exist/" + id).then(function(response){
@@ -42,5 +52,9 @@ export default {
 	},	
 	saveProfile: function(profileData) {
 		return axios.put("/api/profiles/"+ profileData._id, profileData);
+	},
+	updateChips: function(chips) {
+		return axios.put('/user/chips', chips);
+
 	}
 };

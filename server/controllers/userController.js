@@ -11,6 +11,16 @@ module.exports = {
         res.json(err);
       });
   },
+  updateChips: function(req, res) {
+    var chips = req.body.chips
+    console.log(chips)
+    console.log(req.body)
+    db.User.findOneAndUpdate({username: req.body.username}, {$inc: {chips: chips}}, {new: true})
+    .then(function(dbUser) {
+      res.send(dbUser)
+    })
+    .catch(function(err){console.log(err)}
+    )},
   getUser: function(req, res) {
     console.log("HERE:CONTROLLERS");
     db.User.findOne({ username: req.params.username })
@@ -30,7 +40,8 @@ module.exports = {
         console.log(dbMessage);
         return db.User.findOneAndUpdate(
           { username: dbMessage.receiver },
-          { $push: { message: dbMessage._id } },
+          { $push: { message: dbMessage._id }, 
+            $inc: {chips:dbMessage.chips}},
           { new: true }
         );
       })
