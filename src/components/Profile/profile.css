@@ -1,0 +1,11 @@
+.modal-content {
+    z-index: 1000;
+    margin: 0 auto;
+    background-color: blue;
+}
+#myPopover {
+    text-align: center;
+}
+/* #reviewForm {
+    background-color: blue
+} */

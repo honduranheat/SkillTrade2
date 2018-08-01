@@ -10,10 +10,6 @@ var ProfileSchema = new Schema({
     type: Schema.Types.ObjectId,
     required: true
   },
-  username: {
-    type: String,
-    required: true
-  },
   // `title` is required and of type String
   firstName: {
     type: String,
@@ -62,7 +58,11 @@ var ProfileSchema = new Schema({
   listings: [{
     type: Schema.Types.ObjectId,
     ref: "Listing"
-  }]
+  }],
+  reviews: {
+    type : Schema.Types.ObjectId,
+    ref: "Review"
+  }
 });
 
 // This creates our model from the above schema, using mongoose's model method

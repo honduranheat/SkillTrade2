@@ -8,15 +8,14 @@ router.route("/:id")
     .get(profileController.getUserProfile)
     .put(profileController.updateProfile);
 
-router.route("/username/:username")
-    .get(profileController.getProfilebyUsername);
-
-router.route("/exist/:id/:username")
+router.route("/exist/:id")
     .get(profileController.checkIfProfileExists);
-
+router.route("/post")
+    .post(profileController.addReview);
 // Route for saving/updating an Profiles's number of karmaChips
 router.route("/chips/:id/:chips")
     .put(profileController.addChips);
+router.route("/reviews/:id")
+    .get(profileController.getReviewBody)
 
-
-module.exports = router;
+module.exports = router; 

@@ -8,13 +8,13 @@ import LoginForm from './components/login/login-form';
 import Navbar2 from './components/Navbar';
 import Home from './components/Home/home';
 import UserProfile from './components/userprofile';
-
+import addListing from './components/Listing/addListing';
 import Browse from './components/Listing/browse';
 import Profile from './components/Profile/profile';
-// import Ranking from './components/pages/topusers';
 import Messaging from './components/Message/messaging';
-import addListing from './components/Listing/addListing';
-//import Router from ReactRouter.Route;
+import singleListing from './components/singleListing/singleListing.js';
+
+
 //import Switch from ReactRouter.Switch;
 // import Wrapper from './components/Wrapper';
 import Footer from './components/Footer';
@@ -90,21 +90,14 @@ class App extends Component {
 							)}
 						/>
 					)}
-					<Route
-						path="/userprofile/:username"
-						render={(props) => (
-							<UserProfile
-								username={props.match.params.username}
-							/>
-						)}
-					/>
 					{/* {this.state.loggedIn && <Route path="/topusers" component={Ranking} />} */}
 					{this.state.loggedIn && <Route path="/addListing" component={addListing} />}
 					{this.state.loggedIn && (
 						<Route path="/messaging" render={() => <Messaging username={this.state.username} />} />
 					)}
 				</section>
-				{/* </Wrapper> */}
+				
+				<Route exact path="/listing/:id" component={singleListing} />
 				<Footer/>
 			</section>
 		);
