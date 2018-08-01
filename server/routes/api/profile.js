@@ -8,7 +8,10 @@ router.route("/:id")
     .get(profileController.getUserProfile)
     .put(profileController.updateProfile);
 
-router.route("/exist/:id")
+router.route("/username/:username")
+    .get(profileController.getProfilebyUsername);
+
+router.route("/exist/:id/:username")
     .get(profileController.checkIfProfileExists);
 router.route("/post")
     .post(profileController.addReview);
