@@ -60,6 +60,8 @@ router.post("/send", userController.sendMessage)
 //         res.json({ user: null })
 //     }
 // })
+router.put("/chips", userController.updateChips)
+
 router.get('/profile', (req, res, next) => {
     console.log('===== user!!======')
     console.log(req.user)

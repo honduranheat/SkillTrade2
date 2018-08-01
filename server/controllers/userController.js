@@ -23,6 +23,16 @@ module.exports = {
         res.json(err);
       });
   },
+  updateChips: function(req, res) {
+    var chips = req.body.chips
+    console.log(chips)
+    console.log(req.body)
+    db.User.findOneAndUpdate({username: req.body.username}, {$inc: {chips: chips}}, {new: true})
+    .then(function(dbUser) {
+      res.send(dbUser)
+    })
+    .catch(function(err){console.log(err)}
+    )},
   sendMessage: function(req, res) {
     console.log("!!!!HERE:CONTROLLERS" + req.body.sender);
     db.Message.create(req.body)

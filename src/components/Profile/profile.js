@@ -31,35 +31,18 @@ class Profile extends Component {
       rating: "",
       message: "",
       reviewPoints: [],
-      average: ""
+      average: "",
     };
   }
-  //   state = {
-  //     id: this.props.id,
-  //     profile: [],
-  //     _id: "",
-  //     firstName: "",
-  //     lastName: "",
-  //     email: "",
-  //     imageLink: "",
-  //     birthdate: "",
-  //     location: "",
-  //     skills: "",
-  //     reivews: [],
-  //     reviewer: "",
-  //     rating: "",
-  //     message: "",
-  //     reviewPoints: [],
-  //     average: ""
-  //   };
 
-  toggle = () => {
+  toggle() {
     // event.preventDefault();
     this.setState({
-      popoverOpen: true
+      popoverOpen: !this.state.popoverOpen
     });
     // this.handleFormSubmit2();
   };
+
 
   componentDidMount() {
     this.loadProfile();
@@ -92,7 +75,7 @@ class Profile extends Component {
           average: average
         });
         console.log(this.state.average);
-        this.toggle();
+        // this.toggle();
       }
     }
   };
@@ -114,7 +97,7 @@ class Profile extends Component {
   getReviews = id => {
     console.log(id);
     API.getReviewBody(id).then(res => {
-      console.log(res.data[0]);
+      console.log(res.data);
       var reviewItems = res.data.map(review => (
         // console.log(review)
         <div className="reviewClass" id={review._id} key={review._id}>
@@ -145,7 +128,6 @@ class Profile extends Component {
           skills: response.data.skills,
           reviews: response.data.reviews
         });
-        console.log(this.state._id + " line 66");
         this.getReviews(this.state._id);
       })
       .catch(err => console.log(err));
@@ -164,12 +146,12 @@ class Profile extends Component {
   saveReview = reviewData => {
     API.saveReview(reviewData);
     // this.state.reviews.push(reviewData)
-    this.getReviews(this.state._id)
-    this.toggle();
+    this.getReviews(this.state._id);
+    this.setState({ popoverOpen: true });
   };
   handleFormSubmit2 = event => {
     event.preventDefault();
-    // this.toggle();
+    this.toggle();
     console.log(this.state._id);
     var reviewData = {
       reviewer: this.props.username,
@@ -178,8 +160,9 @@ class Profile extends Component {
       receiverId: this.state._id
     };
     this.saveReview(reviewData);
-    // axios.put("/api/profiles/" + this.state.id, {
-
+    document.getElementById("exampleText").disabled =true;
+    document.getElementById("exampleSelect").disabled =true;
+    document.getElementById("Popover1").disabled =true;
     // })
   };
   handleFormSubmit = event => {
@@ -293,9 +276,11 @@ class Profile extends Component {
                     
                   >
                     <PopoverHeader>Thanks For The Review</PopoverHeader>
-                    <PopoverBody id="myPopover">
+                    <PopoverBody id="myPopover" placement="bottom">
                       You've earned a KarmaChip!
                                  (˚◒˚)
+                                 <br/>
+                      <Button onClick={this.toggle}>Close</Button>
                     </PopoverBody>
                   </Popover>
                 </div>
