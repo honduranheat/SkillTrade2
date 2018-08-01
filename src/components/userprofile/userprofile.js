@@ -10,6 +10,7 @@ const UserProfile = (props) => {
                 <CardBody>
                     <CardTitle>{props.firstName} {props.lastName}</CardTitle>
                     <CardSubtitle>{props.location}</CardSubtitle>
+
                     <CardText>
                         Skills: {props.skills}
                     </CardText>

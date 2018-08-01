@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 // import API from '../utils/API';
 import axios from 'axios';
+
 import UserProfile from "../userprofile";
 import {Card, CardBody, CardHeader, Container,  Button, Form, FormGroup, Label, Input } from 'reactstrap';
+
 class Profile extends Component {
     
     state = {

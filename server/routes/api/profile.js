@@ -7,6 +7,9 @@ const profileController = require('../../controllers/profileController');
 router.route("/:id")
     .get(profileController.getUserProfile)
     .put(profileController.updateProfile);
+    
+router.route("/all")
+    .get(profileController.getAllProfiles);
 
 router.route("/username/:username")
     .get(profileController.getProfilebyUsername);

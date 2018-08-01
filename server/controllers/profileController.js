@@ -61,6 +61,7 @@ module.exports = {
             res.send(err);
         });
     },
+
     getAllProfiles: function(req, res) {
         db.Profile.find()
         .then(function(allprofiles){
@@ -72,6 +73,7 @@ module.exports = {
             res.json(err);
         });
     },
+
     // Route for grabbing a specific profile by id, populate it with it's listings and reviews
     getUserProfile: function(req, res) {
         // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...
