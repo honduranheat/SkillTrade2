@@ -47,16 +47,20 @@ class LoginForm extends Component {
 							loggedIn: true,
 							username: response.data.username,
 							id: response.data.id
-						})
-						.then(
-							// update the state to redirect to home
-							this.setState({
-								redirectTo: 'home'
-							})
+						});
+						
+						
+						this.setState({redirectTo: 'home'});
+						console.log(this.state.redirectTo);
+						// .then(
+						// 	// update the state to redirect to home
+						// 	this.setState({
+						// 		redirectTo: 'home'
+						// 	})
 
 							// console.log('/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////')
 							// console.log(this.state.redirectTo)
-						);
+					//	);
 				}
 				console.log(
 					'/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////'
@@ -68,6 +72,10 @@ class LoginForm extends Component {
 				console.log('login error: ');
 				console.log(error);
 			});
+	}
+
+	componentDidUpdate() {
+		
 	}
 
 	render() {
