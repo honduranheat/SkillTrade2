@@ -6,8 +6,8 @@ import { Route } from 'react-router-dom';
 import Signup from './components/login/sign-up';
 import LoginForm from './components/login/login-form';
 import Navbar2 from './components/Navbar';
-import Home from './components/pages/home';
-import UserProfiles from './components/pages/userprofiles';
+import Home from './components/Home/home';
+import UserProfile from './components/userprofile';
 
 import Browse from './components/Listing/browse';
 import Profile from './components/Profile/profile';
@@ -93,7 +93,7 @@ class App extends Component {
 					<Route
 						path="/userprofile/:username"
 						render={(props) => (
-							<UserProfiles
+							<UserProfile
 								username={props.match.params.username}
 							/>
 						)}

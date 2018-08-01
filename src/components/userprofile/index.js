@@ -1,1 +1,1 @@
-export {default} from "./userprofile";
+export {default} from "./userprofile.js";
