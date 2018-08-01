@@ -5,8 +5,7 @@ import axios from "axios";
 import ReactDOM from "react-dom";
 import { Popover, PopoverHeader, PopoverBody } from "reactstrap";
 import "./profile.css";
-import Wrapper from "../Wrapper";
-import { Card, Container } from "reactstrap";
+import { Card, Container, CardHeader, CardBody } from "reactstrap";
 import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -63,8 +62,6 @@ class Profile extends Component {
   };
 
   componentDidMount() {
-    // this.getID();
-    // this.toggle()
     this.loadProfile();
   }
 
@@ -220,118 +217,73 @@ class Profile extends Component {
 
   render() {
     return (
-      <div>
         <section>
           <Container>
-            <Card>
+          <Card body border color="danger">
+          <CardHeader>
               <h1>{`★${this.state.average}`}</h1>
               <h1>_id: {this.props.id}</h1>
-              <form>
-                <div className="form-group">
-                  <label for="firstName" className="form-text">
-                    First Name
-                  </label>
-                  <div className="">
-                    <input
-                      type="title"
-                      className="form-control text-center"
-                      id="firstName"
-                      name="firstName"
-                      placeholder={this.state.firstName}
-                      onChange={this.handleInputChange}
-                    />
-                  </div>
-                </div>
-                <div className="form-group">
-                  <label for="lastName" className="form-text">
-                    Last Name
-                  </label>
-                  <div className="">
-                    <input
-                      type="title"
-                      className="form-control text-center"
-                      id="lastName"
-                      name="lastName"
-                      placeholder={this.state.lastName}
-                      onChange={this.handleInputChange}
-                    />
-                  </div>
-                </div>
-                <div className="form-group">
-                  <label for="email" className="form-text">
-                    Email?
-                  </label>
-                  <div className="">
-                    <input
-                      type="title"
-                      className="form-control text-center"
-                      id="email"
-                      name="email"
-                      placeholder={this.state.email}
-                      onChange={this.handleInputChange}
-                    />
-                  </div>
-                </div>
-                <div className="form-group">
-                  <label for="imageLink" className="form-text">
-                    Image Link?
-                  </label>
-                  <div className="">
-                    <input
-                      type="title"
-                      className="form-control text-center"
-                      id="imageLink"
-                      name="imageLink"
-                      placeholder={this.state.imageLink}
-                      onChange={this.handleInputChange}
-                    />
-                  </div>
-                </div>
-                <div className="form-group">
-                  <label for="birthdate" className="form-text">
-                    Birthday (mm/dd/yy)?
-                  </label>
-                  <div className="">
-                    <input
-                      type="title"
-                      className="form-control text-center"
-                      id="birthdate"
-                      name="birthdate"
-                      placeholder={this.state.birthdate}
-                      onChange={this.handleInputChange}
-                    />
-                  </div>
-                </div>
-                <div className="form-group">
-                  <label for="location" className="form-text">
-                    Where are you located?
-                  </label>
-                  <div className="">
-                    <input
-                      type="title"
-                      className="form-control text-center"
-                      id="location"
-                      name="location"
-                      placeholder={this.state.location}
-                      onChange={this.handleInputChange}
-                    />
-                  </div>
-                </div>
-                <div className="form-group">
-                  <label for="skills" className="form-text">
-                    Description of your Skills
-                  </label>
-                  <div className="">
-                    <textarea
-                      className="form-control text-center"
-                      id="skills"
-                      name="skills"
-                      placeholder={this.state.skills}
-                      onChange={this.handleInputChange}
-                    />
-                  </div>
-                </div>
-                <button onClick={this.handleFormSubmit}>Update Profile</button>
+            </CardHeader>
+            <CardBody>
+              <Form>
+                    <FormGroup>
+                        <Label for="firstName" className="form-text">
+                            First Name
+                        </Label>
+                        <div className="">
+                            <Input type="title" className="form-control text-center" id="firstName" name="firstName" placeholder={this.state.firstName} onChange={this.handleInputChange}/>
+                        </div>
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="lastName" className="form-text">
+                            Last Name
+                        </Label>
+                        <div className="">
+                            <Input type="title" className="form-control text-center" id="lastName" name="lastName" placeholder={this.state.lastName} onChange={this.handleInputChange}/>
+                        </div>
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="email" className="form-text">
+                            Email?
+                        </Label>
+                        <div className="">
+                            <Input type="title" className="form-control text-center" id="email" name="email" placeholder={this.state.email} onChange={this.handleInputChange}/>
+                        </div>
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="imageLink" className="form-text">
+                            Image Link?
+                        </Label>
+                        <div className="">
+                            <Input type="title" className="form-control text-center" id="imageLink" name="imageLink" placeholder={this.state.imageLink} onChange={this.handleInputChange}/>
+                        </div>
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="birthdate" className="form-text">
+                            Birthday (mm/dd/yy)?
+                        </Label>
+                        <div className="">
+                            <Input type="title" className="form-control text-center" id="birthdate" name="birthdate" placeholder={this.state.birthdate} onChange={this.handleInputChange}/>
+                        </div>
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="location" className="form-text">
+                            Where are you located?
+                        </Label>
+                        <div className="">
+                            <Input type="title" className="form-control text-center" id="location" name="location" placeholder={this.state.location} onChange={this.handleInputChange}/>
+                        </div>
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="skills" className="form-text">
+                            Description of your Skills
+                        </Label>
+                        <div className="">
+                            <Input type="textarea" className="form-control text-center" id="skills" name="skills" placeholder={this.state.skills} onChange={this.handleInputChange}/>
+                        </div>
+                    </FormGroup>
+                    <button onClick={this.handleFormSubmit}>Update Profile</button>
+                </Form>
                 <div>
                   <Popover
                     placement="bottom"
@@ -347,7 +299,8 @@ class Profile extends Component {
                     </PopoverBody>
                   </Popover>
                 </div>
-              </form>
+              </CardBody>
+              </Card>
 
               <Container>
                 {/* <div id="modal">
@@ -363,6 +316,8 @@ class Profile extends Component {
           </ModalFooter>
         </Modal>
       </div> */}
+      <Card>
+          <CardBody>
                 <Form>
                   <FormGroup>
                     <h1>Leave a Review</h1>
@@ -404,17 +359,17 @@ class Profile extends Component {
                   </Button>
                 </Form>
                 <div id="reviewDiv" />
-              </Container>
               <Link to={`/messaging/${this.props.username}`}>Messaging</Link>
               {/* {this.state.loggedIn && <Route path="/browse" component={Browse} />} */}
               {/* {console.log("/messaging/" + this.props.username)} */}
               <Link to={`/messaging/${this.props.username}`}>Messaging</Link>
+            </CardBody>
             </Card>
           </Container>
-        </section>
-      </div>
+          </Container>
+</section>
     );
   }
-}
+  }
 
 export default Profile;

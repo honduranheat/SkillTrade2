@@ -1,7 +1,7 @@
 module.exports = {
-    User: require("./User"),
-    Message: require("./Message"),
-    Review: require("./Review"),
-    Profile: require("./Profile")
+    User: require("./user"),
+    Message: require("./message"),
+    Review: require("./review"),
+    Profile: require("./profile")
   };
   
