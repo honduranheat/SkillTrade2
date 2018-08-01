@@ -1,11 +1,14 @@
 import React from 'react';
 import "./logo.css";
+import {Container, Card, CardImg} from 'reactstrap';
 
 const Logo = (props) => {
     return (
-        <section id="logo">
-            <img src={require('../Images/logo.png')} id="img"/>
-        </section>
+        <Container id="logo">
+            <Card>
+                <CardImg src={require('../Images/skillslogo1.png')} id="img" responsive/>
+            </Card>
+        </Container>
     );
 };
 

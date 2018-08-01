@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import axios from 'axios';
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import {  Button, Form, FormGroup, Label, Input, FormText, Container, Card, CardBody, CardHeader  } from 'reactstrap';
 import Home from '../Home/home.js';
 import './style.css';
+
 
 class LoginForm extends Component {
 	constructor(props, context) {
