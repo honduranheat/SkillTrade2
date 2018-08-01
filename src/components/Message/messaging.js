@@ -3,43 +3,53 @@ import API from "../utils/API";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { MessageListItem, MessageList } from "./index";
 import ReactDOM from "react-dom";
-
 import { Popover, PopoverHeader, PopoverBody } from "reactstrap";
 import { UncontrolledCollapse, Collapse, CardBody, Card, Container } from "reactstrap";
 // import "./../../App.css";
 import DeleteButton from "./DeleteBtn";
-import './message.css'
-
+import "./message.css";
 
 class Messaging extends Component {
   constructor(props) {
     super(props);
+    this.toggle = this.toggle.bind(this);
     this.state = {
-      messageProps: []
+      popoverOpen: false,
+      messageProps: [],
+      collapse: false,
+      messages: [],
+      messageBody: [],
+      receiver: "",
+      body: "",
+      chipsToSend: "0",
+      chips: "0"
     };
   }
+
   arr = [];
-  state = {
-    messages: [],
-    messageBody: [],
-    receiver: "",
-    body: ""
-  };
+
+  toggle() {
+    this.setState({
+      popoverOpen: !this.state.popoverOpen
+    });
+  }
+
   componentDidMount() {
     // console.log(this.props.id)
     this.getUser(this.props.username);
   }
   getUser = username => {
     API.getUser(username).then(res => {
-      console.log(res);
+      console.log(res.data.chips);
       this.setState({
-        messages: res.data.message
+        messages: res.data.message,
+        chips: res.data.chips
       });
       this.state.messages.map(id => {
         this.getMessageBody(id);
         return id;
       });
-      console.log(this.state.messageBody);
+      console.log(this.state.chips);
       // this.getMessageBody(this.state.messages[0])
     });
   };
@@ -59,7 +69,7 @@ class Messaging extends Component {
   };
   displayMessages = event => {
     event.preventDefault();
-  this.state.messageBody.map(message => {
+    this.state.messageBody.map(message => {
       return (
         <MessageListItem id="center">
           <strong>
@@ -71,23 +81,29 @@ class Messaging extends Component {
   };
 
   removeMessage = id => {
-    console.log(id + "LINE 84!!!!!!!!!!!!!!!!!!!!!!!!1")
+    console.log(id + "LINE 84!!!!!!!!!!!!!!!!!!!!!!!!1");
     document.getElementById(id).remove();
-  }
+  };
   deleteFromProps = id => {
     console.log(this.state.messageProps[0].data);
     // var mongoose = require("mongoose");
     // id = ObjectId(id).str;
-    console.log(id)
+    console.log(id);
     for (var i = 0; i < this.state.messageProps.length; i++) {
-      console.log(this.state.messageProps[i].data[0]._id + "HEEEERRRRE))))))))))))))))))))))))))");
+      console.log(
+        this.state.messageProps[i].data[0]._id +
+          "HEEEERRRRE))))))))))))))))))))))))))"
+      );
       if (this.state.messageProps[i].data[0]._id == id) {
         console.log("118");
-        this.state.messageProps.splice(i, 1)
-        console.log(this.state.messageProps)
-        this.provideMessagesB()
+        this.state.messageProps.splice(i, 1);
+        console.log(this.state.messageProps);
+        this.provideMessagesB();
         break;
-      } else {console.log("120"); i++};
+      } else {
+        console.log("120");
+        i++;
+      }
     }
   };
   deleteMessage = (username, id) => {
@@ -95,7 +111,7 @@ class Messaging extends Component {
     API.deleteMessage({
       username: username,
       id: id
-    })
+    });
     this.deleteFromProps(id);
 
     // this.state.messageProps.map(message => {
@@ -106,40 +122,38 @@ class Messaging extends Component {
 
     // this.state.messageProps.splice(_.indexOf(this.state.messageProps, _.findWhere(this.state.messageProps, { id : id})), 1);
   };
+  updateChips = () => {
+    console.log("HERE UPDATE CHIPS")
+    var chips = parseInt(this.state.chipsToSend)
+    var info = {
+      username: this.props.username,
+      chips: -(chips)
+    }
+    API.updateChips(info)
+    .then(res => {
+      console.log("128")
+      console.log(res)
+      this.getUser(this.props.username)
+    })
+  }
   handleFormSubmit = event => {
     event.preventDefault();
+    var info = []
     console.log(this.props.username + "LINE 109!!!!!!!!!!!!!!!!!!");
-if (this.state.receiver && this.state.body) {
+    if (this.state.receiver && this.state.body) {
+      if ((this.state.receiver === this.props.username) && (this.state.chipsToSend !== "0")) {
+        alert("You can't send chips to yourself")
+      }
+      else {
       API.sendMessage({
         receiver: this.state.receiver,
         body: this.state.body,
-        sender: this.props.username
+        sender: this.props.username,
+        chips: parseInt(this.state.chipsToSend)
       })
-        // .then(res => {
-        //   console.log(res)
-
-          // if(res === this.props.username) {
-          //   console.log("Same User")
-          // }
-          // else {
-          //   console.log(
-          //   "different user"
-          //   )
-          // }
-          // console.log(res);
-          // this.componentDidMount()
-    
-        // .then(res => this.loadBooks())
-        .catch(err => console.log(err));
-        console.log("here 133")
-        if(this.state.receiver === this.props.username) {
-          console.log("135 Receiver is the same")
-        }
-        else {
-          console.log("135 Receiver isnt same")
-
-        }
-        // this.getUser(this.props.username)
+      .then(this.updateChips())
+      .catch(err => console.log(err));
+      }
     }
 
   };
@@ -154,7 +168,6 @@ if (this.state.receiver && this.state.body) {
     });
   };
   provideMessagesB = () => {
-
     if (this.state.messageProps.length === 0) {
       this.setState({ popoverOpen: true });
       document.getElementById("messageDiv").innerHTML = "";
@@ -235,17 +248,34 @@ if (this.state.receiver && this.state.body) {
     // alert(delButton)
   };
 
-  //   // When this component mounts, grab the book with the _id of this.props.match.params.id
-  //   // e.g. localhost:3000/books/599dcb67f0f16317844583fc
-  //   componentDidMount() {
-  //     API.getBook(this.props.match.params.id)
-  //       .then(res => this.setState({ book: res.data }))
-  //       .catch(err => console.log(err));
-  // //   }
-  // componentDidMount() {
-  //     API.getUser()
-  // }
+  checkChips = event => {
+    event.preventDefault();
+    if (this.state.chipsToSend > this.state.chips) {
+      console.log("not enough chips");
+      document.getElementById("chipChecker").textContent = "You Don't Have Enough Chips";
+      this.setState({ collapse: true });
 
+    } else if(this.state.chipsToSend < 0) {
+      console.log("cant send negative chips");
+      document.getElementById("chipChecker").textContent = "Can't Send Negative Chips";
+      this.setState({ collapse: true });
+    } else {
+      console.log("you have enough chips");
+      this.setState({ collapse: false });
+      document.getElementById("chipAdder").textContent = "Chips Added!";
+      document.getElementById("chipAdder").disabled = true;
+      document.getElementById("resetButton").style.display = "inline";
+    }
+  };
+  resetChipSend = event => {
+    event.preventDefault();
+    document.getElementById("chipAdder").textContent = "Add Chips To Message";
+    document.getElementById("chipAdder").disabled = false;
+    document.getElementById("resetButton").style.display = "none";
+    this.setState({
+      chipsToSend: ""
+    })
+  }
   render() {
     return (
       <div>
@@ -359,7 +389,8 @@ if (this.state.receiver && this.state.body) {
                 Show Messages
               </Button>
 
-              {/* <button onClick={function displayMessages( event)  {
+              <MessageList>
+                {/* <button onClick={function displayMessages( event)  {
             <button onClick={function displayMessages( event)  {
               event.preventDefault();
               this.state.messageBody.map(message => {
@@ -373,8 +404,7 @@ if (this.state.receiver && this.state.body) {
                     
                   );
 //                 }) */}
-{/* }}>View Messages</button> */}
-
+                {/* }}>View Messages</button> */}
 
                 <div id="messageDiv" />
               </MessageList>
@@ -396,9 +426,9 @@ if (this.state.receiver && this.state.body) {
                   </MessageListItem>
                   
                 ); */}
-              {/* })} */}
+        {/* })} */}
 
-              {/* <MessageListItem id="center" key={message.id}> 
+        {/* <MessageListItem id="center" key={message.id}> 
                   <strong>
                     <h1>{message.body}</h1>
                     <h1>{message.data.body}</h1>
@@ -406,7 +436,7 @@ if (this.state.receiver && this.state.body) {
                   </MessageListItem>
                                 )
               })} */}
-            {/* <FormGroup>
+        {/* <FormGroup>
               <Label for="exampleEmail">To (username):</Label>
               <Input
                 type="textarea"
@@ -426,10 +456,10 @@ if (this.state.receiver && this.state.body) {
                 value={this.state.receiver}
               />
             </FormGroup> */}
-          
-          {/* {this.provideMessages} */}
-          {/* // res.data.map((message) => { */}
-          {/* //   return (
+
+        {/* {this.provideMessages} */}
+        {/* // res.data.map((message) => { */}
+        {/* //   return (
             //     <div><h1>{message.props.children}</h1></div>
             //   )
             // })
@@ -438,13 +468,13 @@ if (this.state.receiver && this.state.body) {
 
           })
         } */}
-          {/* ["0"].props.children */}
+        {/* ["0"].props.children */}
 
         {/* <Card body outline color="warning">
           <CardBody>
           <h1 color="info" className="display-2 text-center">Inbox</h1>
           {/* <p>{this.state.user}</p> */}
-         {/* </Form>
+        {/* </Form>
           </CardBody>
         </Card> */}
       </div>
