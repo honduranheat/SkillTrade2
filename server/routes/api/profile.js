@@ -7,14 +7,8 @@ const profileController = require('../../controllers/profileController');
 router.route("/:id")
     .get(profileController.getUserProfile)
     .put(profileController.updateProfile);
-    
-router.route("/all")
-    .get(profileController.getAllProfiles);
 
-router.route("/username/:username")
-    .get(profileController.getProfilebyUsername);
-
-router.route("/exist/:id/:username")
+router.route("/exist/:id")
     .get(profileController.checkIfProfileExists);
 
 // Route for saving/updating an Profiles's number of karmaChips
