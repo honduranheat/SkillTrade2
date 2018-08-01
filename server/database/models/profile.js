@@ -7,7 +7,11 @@ var Schema = mongoose.Schema;
 // This is similar to a Sequelize model
 var ProfileSchema = new Schema({
   _id: {
-    type: Schema.Types.ObjectId,
+    type: String,
+    required: true
+  },
+  username: {
+    type: String,
     required: true
   },
   // `title` is required and of type String
