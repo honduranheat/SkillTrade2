@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, FormText, Container, Card, CardBody, CardHeader } from 'reactstrap';
 
 class LoginForm extends Component {
     constructor() {
@@ -58,8 +58,12 @@ class LoginForm extends Component {
             return <Redirect to={{ pathname: this.state.redirectTo }} />
         } else {
             return (
-                <div>
+                <Container>
+                    <Card>
+                        <CardHeader>
                     <h4>Login</h4>
+                    </CardHeader>
+                    <CardBody>
                     <Form>
                         <FormGroup>
                             <Label for="username">
@@ -91,6 +95,7 @@ class LoginForm extends Component {
                             </Button>
                         </FormGroup>
                     </Form>
+                    </CardBody>
                     {/* <form className="form-horizontal">
                         <div className="form-group">
                             <div className="col-1 col-ml-auto">
@@ -129,7 +134,8 @@ class LoginForm extends Component {
                                 type="submit">Login</button>
                         </div>
                     </form> */}
-                </div>
+                </Card>
+                </Container>
             )
         }
     }

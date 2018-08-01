@@ -3,8 +3,9 @@ import API from "../utils/API";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { MessageListItem, MessageList } from "./index";
 import ReactDOM from "react-dom";
-//import DeleteBtn from "./../DeleteBtn";
-import { UncontrolledCollapse, CardBody, Card } from "reactstrap";
+
+import { Popover, PopoverHeader, PopoverBody } from "reactstrap";
+import { UncontrolledCollapse, Collapse, CardBody, Card, Container } from "reactstrap";
 // import "./../../App.css";
 import DeleteButton from "./DeleteBtn";
 import './message.css'
@@ -153,55 +154,75 @@ if (this.state.receiver && this.state.body) {
     });
   };
   provideMessagesB = () => {
-    console.log(this.state.messageProps);
-    let data = this.state.messageProps;
-    const listItems = data.map(d => (
-      // <li receiver={d.data.}
-      <div class="messageClass" id={d.data[0]._id} key={d.data[0]._id}>
-        <li>From:{d.data[0].sender}</li>
-        <li>Body:{d.data[0].body}</li>
-        <DeleteButton
-          onClick={() => this.deleteMessage(this.props.username, d.data[0]._id)}
-          color="primary" bsSize="lg" block >
-          Delete
-        </DeleteButton>
-        <div>
-          <Button color="primary" bsSize="lg" block id="toggler" style={{ marginBottom: "1rem", margin: 'auto'}}>
-            Reply
-          </Button>
-          <UncontrolledCollapse toggler="#toggler">
-            <Card body outline color="warning">
-              <CardBody>
-                <Form>
-                  <FormGroup>
-                    <Label for="exampleText">Reply</Label>
-                    <Input
-                      type="textarea"
-                      name="body"
-                      id="exampleText"
-                      onChange={this.handleInputChange}
-                      value={this.state.body}
-                      onClick={this.setState({ receiver: d.data[0].sender })}
-                      bsSize="lg"
-                    />
-                    <Button
-                      // disabled={!(this.state.body)}
-                      style={{margin: 'auto'}}
-                      onClick={this.handleFormSubmit}
-                    >
-                      Send Message
-                    </Button>
-                  </FormGroup>
-                </Form>
-              </CardBody>
-            </Card>
-          </UncontrolledCollapse>
+
+    if (this.state.messageProps.length === 0) {
+      this.setState({ popoverOpen: true });
+      document.getElementById("messageDiv").innerHTML = "";
+    } else {
+      console.log(this.state.messageProps);
+      let data = this.state.messageProps;
+      const listItems = data.map(d => (
+        // <li receiver={d.data.}
+        <Container>
+        <div class="messageClass" id={d.data[0]._id} key={d.data[0]._id}>
+          <p>From: {d.data[0].sender}</p>
+          <p>Body: {d.data[0].body}</p>
+          <p>Chips Received: {d.data[0].chips}</p>
+          <DeleteButton
+            onClick={() =>
+              this.deleteMessage(this.props.username, d.data[0]._id)
+            }
+            color="primary"
+            bsSize="lg"
+            block
+          >
+            Delete
+          </DeleteButton>
+          <div>
+            <Button
+              color="primary"
+              bsSize="lg"
+              block
+              id="toggler"
+              style={{ marginBottom: "1rem", margin: "auto" }}
+            >
+              Reply
+            </Button>
+            <UncontrolledCollapse toggler="#toggler">
+              <Card body outline color="warning">
+                <CardBody>
+                  <Form>
+                    <FormGroup>
+                      <Label for="exampleText">Reply</Label>
+                      <Input
+                        type="textarea"
+                        name="body"
+                        id="exampleText"
+                        onChange={this.handleInputChange}
+                        value={this.state.body}
+                        onClick={this.setState({ receiver: d.data[0].sender })}
+                        bsSize="lg"
+                      />
+                      <Button
+                        // disabled={!(this.state.body)}
+                        style={{ margin: "auto" }}
+                        onClick={this.handleFormSubmit}
+                      >
+                        Send Message
+                      </Button>
+                    </FormGroup>
+                  </Form>
+                </CardBody>
+              </Card>
+            </UncontrolledCollapse>
+          </div>
         </div>
-      </div>
-    ));
-    console.log(listItems);
-    ReactDOM.render(listItems, document.getElementById("messageDiv"));
-    this.forceUpdate();
+        </Container>
+      ));
+      console.log(listItems);
+      ReactDOM.render(listItems, document.getElementById("messageDiv"));
+      this.forceUpdate();
+    }
     // return listItems;
   };
   provideMessages = () => {
@@ -228,45 +249,115 @@ if (this.state.receiver && this.state.body) {
   render() {
     return (
       <div>
+        <div>
+          <Popover
+            placement="bottom"
+            isOpen={this.state.popoverOpen}
+            target="Popover1"
+            toggle={this.toggle}
+          >
+            <PopoverHeader>No Messages To Display</PopoverHeader>
+            <PopoverBody>୧( ಠ Д ಠ )୨</PopoverBody>
+          </Popover>
+        </div>
+        <Container>
         <Card id="mess" className="text-center" body outline color="danger">
-        <CardBody>
-          <h1>Send Message</h1>
-          <Form>
-            <FormGroup>
-              <Label for="exampleText">Message</Label>
-              <Input
-                type="textarea"
-                name="body"
-                id="exampleText"
-                onChange={this.handleInputChange}
-                value={this.state.body}
-                bsSize="lg"
-              />
-            </FormGroup>
-            <FormGroup>
-              <Label for="exampleEmail">User</Label>
-              <Input
-                type="textarea"
-                name="receiver"
-                id="exampleEmail"
-                onChange={this.handleInputChange}
-                value={this.state.receiver}
-                bsSize="lg"
-              />
-            </FormGroup>
-            <Button
-              disabled={!(this.state.receiver && this.state.body)}
-              onClick={this.handleFormSubmit}
-              color="primary" size="lg" block
-              style={{margin: 'auto'}} >
-              Send Message
-            </Button>
-            <h1 className="display-1">
-            Inbox
-            </h1>
-            
-            <Button onClick={this.provideMessagesB} color="primary" size="lg" block>Show Messages</Button>
-            <MessageList>
+          <CardBody>
+            <h1>Hi, {this.props.username}!</h1>
+            <h2>KarmaChips: {this.state.chips}</h2>
+            {/* <h2>You have {this.state.messageBody.length} messages</h2> */}
+            <h3>Send Message</h3>
+            <Form>
+              <FormGroup>
+                <Label for="exampleText">Message</Label>
+                <Input
+                  type="textarea"
+                  name="body"
+                  id="exampleText"
+                  onChange={this.handleInputChange}
+                  value={this.state.body}
+                  bsSize="lg"
+                />
+              </FormGroup>
+              <FormGroup>
+                <Label for="exampleEmail">User</Label>
+                <Input
+                  type="textarea"
+                  name="receiver"
+                  id="exampleEmail"
+                  onChange={this.handleInputChange}
+                  value={this.state.receiver}
+                  bsSize="lg"
+                />
+              </FormGroup>
+              <div>
+                <Button
+                  color="primary"
+                  id="toggler"
+                  style={{ marginBottom: "1rem" }}
+                >
+                  Add Chips
+                </Button>
+                <div id="addChipDiv">
+                  <UncontrolledCollapse toggler="#toggler">
+                    <Card>
+                      <CardBody>
+                        How many chips would you like to send?
+                        <br/>
+                        You currently have {this.state.chips}.
+                        <FormGroup>
+                          <Label for="chipsToSend" />
+                          <Input
+                            type="number"
+                            name="chipsToSend"
+                            id="chipsToSend"
+                            placeholder={this.state.chipsToSend}
+                            onChange={this.handleInputChange}
+                            value={this.state.chipsToSend}
+                          />
+                        </FormGroup>
+                        <div>
+                          <Collapse isOpen={this.state.collapse}>
+                            <Card>
+                              <CardBody id="chipChecker"></CardBody>
+                            </Card>
+                          </Collapse>
+                        </div>
+                        <div id="resetDiv">
+                        <Button id="chipAdder" onClick={this.checkChips}>
+                          Add Chips To Message
+                        </Button>
+                        
+                          <Button style={{ display: "none" }} id="resetButton" onClick={this.resetChipSend}>
+                            Reset
+                          </Button>
+                        </div>
+                      </CardBody>
+                    </Card>
+                  </UncontrolledCollapse>
+                </div>
+              </div>
+              <Button
+                disabled={!(this.state.receiver && this.state.body)}
+                onClick={this.handleFormSubmit}
+                color="primary"
+                size="lg"
+                block
+                style={{ margin: "auto" }}
+              >
+                Send Message
+              </Button>
+              <h1 className="display-1">Inbox</h1>
+
+              <Button
+                onClick={this.provideMessagesB}
+                color="primary"
+                id="Popover1"
+                size="lg"
+                block
+              >
+                Show Messages
+              </Button>
 
               {/* <button onClick={function displayMessages( event)  {
             <button onClick={function displayMessages( event)  {
@@ -284,12 +375,14 @@ if (this.state.receiver && this.state.body) {
 //                 }) */}
 {/* }}>View Messages</button> */}
 
-<div id="messageDiv" />
-</MessageList>
-</Form>
-</CardBody>
-</Card>
-            {/* {this.state.messageBody.map(message => {
+
+                <div id="messageDiv" />
+              </MessageList>
+            </Form>
+          </CardBody>
+        </Card>
+        </Container>
+        {/* {this.state.messageBody.map(message => {
                 })
             }}>View Messages</button>
 
