@@ -26,13 +26,12 @@
     "spectre.css": "^0.5.3"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "./node_modules/.bin/nodemon ./server/server.js ",
+    "build": "rm -rf ./server/build && react-scripts build && mv build ./server/",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "api": "nodemon ./server/server.js",
-    "dev": "concurrently \"react-scripts start\" \"nodemon server/server.js\"",
-    "proxy": "http://localhost:8080"
+    "dev": "concurrently \"react-scripts start\" \"nodemon server/server.js\""
   },
   "proxy": "http://localhost:8000",
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
@@ -42,6 +41,5 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/chelsg7/Project3-2/issues"
-  },
-  "homepage": "https://github.com/chelsg7/Project3-2#readme"
+  }
 }
