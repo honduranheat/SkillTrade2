@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios';
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, FormText, Container, Card, CardBody, CardHeader } from 'reactstrap';
 
 class Signup extends Component {
 	constructor() {
@@ -49,10 +49,14 @@ class Signup extends Component {
 
 render() {
 	return (
-		<div className="SignupForm">
+		<Container>
+		<Card className="SignupForm">
+		<CardHeader>
 			<h4 className="text-center">
 				Sign up
 			</h4>
+			</CardHeader>
+			<CardBody>
 			<Form>
 				<FormGroup>
 					<div>
@@ -97,8 +101,9 @@ render() {
 					</Button>
 				</FormGroup>
 			</Form>
-		</div>
-
+			</CardBody>
+			</Card>
+			</Container>
 	)
 }
 }

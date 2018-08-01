@@ -4,7 +4,7 @@ import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { MessageListItem, MessageList } from "./index";
 import ReactDOM from "react-dom";
 import { Popover, PopoverHeader, PopoverBody } from "reactstrap";
-import { UncontrolledCollapse, Collapse, CardBody, Card } from "reactstrap";
+import { UncontrolledCollapse, Collapse, CardBody, Card, Container } from "reactstrap";
 // import "./../../App.css";
 import DeleteButton from "./DeleteBtn";
 import "./message.css";
@@ -176,6 +176,7 @@ class Messaging extends Component {
       let data = this.state.messageProps;
       const listItems = data.map(d => (
         // <li receiver={d.data.}
+        <Container>
         <div class="messageClass" id={d.data[0]._id} key={d.data[0]._id}>
           <p>From: {d.data[0].sender}</p>
           <p>Body: {d.data[0].body}</p>
@@ -229,6 +230,7 @@ class Messaging extends Component {
             </UncontrolledCollapse>
           </div>
         </div>
+        </Container>
       ));
       console.log(listItems);
       ReactDOM.render(listItems, document.getElementById("messageDiv"));
@@ -288,6 +290,7 @@ class Messaging extends Component {
             <PopoverBody>୧( ಠ Д ಠ )୨</PopoverBody>
           </Popover>
         </div>
+        <Container>
         <Card id="mess" className="text-center" body outline color="danger">
           <CardBody>
             <h1>Hi, {this.props.username}!</h1>
@@ -331,7 +334,7 @@ class Messaging extends Component {
                       <CardBody>
                         How many chips would you like to send?
                         <br/>
-                         You currently have {this.state.chips}.
+                        You currently have {this.state.chips}.
                         <FormGroup>
                           <Label for="chipsToSend" />
                           <Input
@@ -408,6 +411,7 @@ class Messaging extends Component {
             </Form>
           </CardBody>
         </Card>
+        </Container>
         {/* {this.state.messageBody.map(message => {
                 })
             }}>View Messages</button>
