@@ -1,4 +1,4 @@
-const Listing = require('../database/models/Listing');
+const Listing = require('../database/models/listing');
 
 module.exports = {
 	findAll: function(req, res) {
