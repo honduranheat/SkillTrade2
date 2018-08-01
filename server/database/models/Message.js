@@ -14,9 +14,6 @@ var MessageSchema = new Schema({
     sender: {
         type:String,
         required: true,
-    },
-    chips: {
-        type: Number
     }
 });
 var Message = mongoose.model("Message", MessageSchema);
