@@ -3,12 +3,8 @@ import { Link } from "react-router-dom";
 // import API from '../utils/API';
 import axios from 'axios';
 import Wrapper from '../Wrapper';
-<<<<<<< HEAD:src/components/pages/profile.js
-import {Card, Container} from 'reactstrap';
 import UserProfile from "../userprofile";
-=======
 import {Card, CardBody, CardHeader, Container,  Button, Form, FormGroup, Label, Input } from 'reactstrap';
->>>>>>> heroku+cwork+lucybranch:src/components/Profile/profile.js
 
 class Profile extends Component {
 
@@ -105,20 +101,17 @@ class Profile extends Component {
                 <Container>
                     <Card body border color="danger">
                         <CardHeader>
-                <h1>_id: {this.props.id}</h1>
-<<<<<<< HEAD:src/components/pages/profile.js
+                {/* <h1>_id: {this.props.id}</h1>
                 <h1>karma chips : {this.state.karmaChips}</h1>
                 <UserProfile karmaChips={this.state.karmaChips} imageLink={this.state.imageLink} firstName={this.state.firstName} lastName={this.state.lastName} skills={this.state.skills} location={this.state.location} dateJoined={this.state.dateJoined} />
                 <form>
                     <div className= "form-group">
-                        <label for="firstName" className="form-text">
-=======
+                        <label for="firstName" className="form-text"> */}
                 </CardHeader>
                 <CardBody>
                 <Form>
                     <FormGroup>
                         <Label for="firstName" className="form-text">
->>>>>>> heroku+cwork+lucybranch:src/components/Profile/profile.js
                             First Name
                         </Label>
                         <div className="">
